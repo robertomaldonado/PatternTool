@@ -249,8 +249,6 @@ void TextParser::printVectorCombined( std::vector<std::string>& v1 , std::vector
     {
         cout << v1[i] << ": " << v2[i]<< endl << endl;
     }//end for
-    cout << "Cuenta palabras: ";
-    cout << v1.size() << endl;
 
 }
 
@@ -331,10 +329,10 @@ void TextParser::generateAcuteChars(){
     
 }
 
-
-void TextParser::generateMultipleChars(){
-    
+void TextParser::generateMultipleChars(){ 
     //Mayus
+    multipleChars.push_back("Tilde");
+    multipleChars.push_back("Whitespace");
     multipleChars.push_back("???"); //
     multipleChars.push_back("!!!"); //
     multipleChars.push_back("..."); //
@@ -342,31 +340,194 @@ void TextParser::generateMultipleChars(){
    for (int i = 0; i < multipleChars.size() ; i++){     
         multipleCharsCount.push_back(0);  //Inicializar todo a cero
         multipleCharsCountDec.push_back(0);
-    }
+   }
+}
+void TextParser::generateKumarExpressions(){
 
+    kumarExpressions.push_back("Bueno");
+    kumarExpressions.push_back("Sin embargo");
+    kumarExpressions.push_back("Basicamente");
+
+   for (int i = 0; i < kumarExpressions.size() ; i++){     
+        kumarExpressionsCount.push_back(0);  //Inicializar todo a cero
+        kumarExpressionsCountDec.push_back(0);
+   }
 }
 
 void TextParser::compareChars(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
 
     for (int i = 0; i < toCompare.size() ; i++)
     {
+        
         for(int j=0; j < commonChars.size() ; j++){
                 std::size_t found = toCompare[i].find(commonChars[j]);
                 if (found!=std::string::npos)
                 {
                 commonCharsCount[j] =  commonCharsCount[j]+1;
-                }
-                
-//        for(int k=0; k < multipleChars.size() ; k++){
-//                std::size_t found2 = toCompare[i].find(multipleChars[k]);
-//                if (found2!=std::string::npos)
-//                {
-//                multipleCharsCount[k] =  multipleCharsCount[k]+1;
-//                }
-        }
+                found = 0;
+                }        
       }
-    }   
+    } 
+}
 
+void TextParser::compareMultipleChars(std::vector<std::string>& toCompare){
+       
+    for(int i = 0 ; i < acuteCharsCount.size() ; i++){
+        multipleCharsCount[0] += acuteCharsCount[i];
+    }
+        multipleCharsCount[1] = 9 ; //Correguir
+        
+    for (int i = 0; i < toCompare.size() ; i++){
+        for (int k=2; k < multipleChars.size() ; k++){
+                std::size_t pos = toCompare[i].find(multipleChars[k]);
+                if (pos!=std::string::npos)
+                {
+                multipleCharsCount[k] =  multipleCharsCount[k]+1;
+                pos = 0;
+                }
+        }
+    }
+       // cout << "PARRAFOS: " << getParagraphs() <<endl;
+ 
+}
+void TextParser::compareKumarExpressions(std::vector<std::string>& toCompare){
+       
+    for(int i = 0 ; i < acuteCharsCount.size() ; i++){
+        multipleCharsCount[0] += acuteCharsCount[i];
+    }
+        multipleCharsCount[1] = 9 ; //Correguir
+        
+    for (int i = 0; i < toCompare.size() ; i++){
+        
+        for (int k=0; k < kumarExpressions.size() ; k++){
+                std::size_t pos = toCompare[i].find(kumarExpressions[k]);
+                if (pos!=std::string::npos)
+                {
+                    kumarExpressionsCount[k] =  kumarExpressionsCount[k]+1;
+                }
+        }
+    }
+       // cout << "PARRAFOS: " << getParagraphs() <<endl;
+ 
+}
+
+void TextParser::addKumarAvg(){
+    
+        kumarExpressionsCount.push_back(kumarExpressionsCount[0]/wordsVector.size());
+        kumarExpressionsCount.push_back(kumarExpressionsCount[1]/wordsVector.size());
+        kumarExpressionsCount.push_back(kumarExpressionsCount[2]/wordsVector.size());
+
+}
+
+int TextParser::getParagraphs(std::string text){
+    
+    int number_of_p = 0;
+    string comp = "";
+    
+     for(unsigned int i=0; i < text.length(); i++){
+       //     cout << "Text: "<<text[i] << endl;
+         
+           if ( text[i]== '\n')
+                        number_of_p++;
+         }
+    
+    return number_of_p;
+}
+
+int TextParser::getNumberWords(){
+    return wordsVector.size();
+}
+
+int TextParser::getAvgWordLength(){
+    int sum = 0;
+    int avg = 0;
+    
+    for (unsigned int i=0; i < wordsVector.size(); i++){
+        
+        sum += wordsVector[i].size();
+    }
+    avg = sum/wordsVector.size(); 
+    
+    return avg;
+}
+
+int TextParser::getSentencesMessage(){
+    int sentences = commonCharsCount[0] + commonCharsCount[5] + commonCharsCount[7] ;
+    return sentences;
+}
+
+double TextParser::getDotPerPar(){
+    double dotsPP = commonCharsCount[0] / (double)getParagraphs(wholeText) ;
+    return dotsPP;
+}
+
+double TextParser::getCommaPerPar(){
+    double commaPP = commonCharsCount[2] / (double)getParagraphs(wholeText) ;
+    return commaPP;
+}
+
+double TextParser::getColonPerPar(){
+    double colonPP = commonCharsCount[1] / (double)getParagraphs(wholeText) ;
+    return colonPP;
+}
+
+double TextParser::getSemicolonPerPar(){
+    double semicolonPP = commonCharsCount[3] / (double)getParagraphs(wholeText) ;
+    return semicolonPP;
+}
+double TextParser::getQosPerPar(){
+    double qosPP = commonCharsCount[3] / (double)getParagraphs(wholeText) ;
+    return qosPP;
+}
+double TextParser::getMultipleQosPerPar(){
+    double mqosPP = commonCharsCount[7] / (double)getParagraphs(wholeText) ;
+    return mqosPP;
+}
+double TextParser::getWordsPerPar(){
+    double wordsPS = wordsVector.size() / (double)getParagraphs(wholeText) ;
+    return wordsPS;
+}
+double TextParser::getWordsPerSent(){
+    double wordsPS = wordsVector.size() / (double)getSentencesMessage() ;
+    return wordsPS;
+}
+double TextParser::getWsPerSent(){
+    double wsPS = wordsVector.size() / (double)getSentencesMessage() ;
+    return wsPS;
+}
+
+void TextParser::getAverages(){
+    
+    averageVectorCountDec.push_back( getWordsPerSent() );
+    averageVectorCountDec.push_back( getWordsPerPar() );
+}
+
+//void TextParser::compareMultipleChars(std::string toCompare){
+//    
+//    std::string comp = "";
+//            
+//    for (int i = 0; i+2 < toCompare.size() ; i++)
+//    {
+//         comp = toCompare.substr(i,i+2);
+//        
+//        //cout << comp;
+//        
+//        for(int k=0; k < multipleChars.size() ; k++){
+//           
+//               // cout<<"Compare " << multipleChars[k] << " against " << comp << endl;
+//               // cout << "Valore de salida son : " <<i << ", " << k << endl; 
+//                
+//                if(comp.compare(multipleChars[k]) == 0){
+//        
+//                        multipleCharsCount[k] =  multipleCharsCount[k]+1;
+//                //        cout<<"Success!!!!!!" << multipleChars[k] << endl;
+//                }
+//                std::size_t pos = comp.find("...");
+//                
+//          //  }
+//        }
+//    }
+//}
 void TextParser::compareAcuteChars(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
 
     for (int i = 0; i < toCompare.size() ; i++){
@@ -454,6 +615,23 @@ void TextParser::generateAcuteOutputChars(){
 
 }
 
+void TextParser::generateMultipleOutputChars(){
+    
+    //Puntuacion
+    outputAcuteChars.push_back("TLD"); // Tildes
+    outputAcuteChars.push_back("WSM"); // Whitespaces in message
+    outputAcuteChars.push_back("MQM"); // Multiple Question
+    outputAcuteChars.push_back("MQM"); // Multiple Exclamation
+    outputAcuteChars.push_back("MEL"); // Multiple Dots ...
+//    
+//    outputAcuteChars.push_back("MIA");
+//    outputAcuteChars.push_back("MIE");
+//    outputAcuteChars.push_back("MII");
+//    outputAcuteChars.push_back("MIO");
+//    outputAcuteChars.push_back("MIU");
+
+}
+
 void TextParser::refineResults(){
   
      for (int i = 0; i < acuteCharsCount.size() ; i++)
@@ -462,16 +640,20 @@ void TextParser::refineResults(){
          //cout << "Se ha dividido para: " << wordsVector.size() << endl;
      }
      
-     for (int i = 0; i < commonCharsCount.size() ; i++)
+     for (int j = 0; j < commonCharsCount.size() ; j++)
      {
-         commonCharsCountDec[i] = (commonCharsCount[i]/(double)wordsVector.size())*100;
+         commonCharsCountDec[j] = (commonCharsCount[j]/(double)wordsVector.size())*100;
      }
      
-     for (int i = 0; i < multipleCharsCount.size() ; i++)
+     for (int k = 0; k < multipleCharsCount.size() ; k++)
      {
-         multipleCharsCountDec[i] = (multipleCharsCount[i]/(double)wordsVector.size())*100;
+         multipleCharsCountDec[k] = (multipleCharsCount[k]/(double)wordsVector.size())*100;
      }
      
+     for (int m = 0; m < kumarExpressions.size() ; m++)
+     {
+         kumarExpressionsCountDec[m] = (kumarExpressionsCount[m]/(double)wordsVector.size())*100;
+     }
     
 }
 
@@ -602,6 +784,10 @@ void TextParser::resetVariables(){
     
     outputCommonChars.clear();
     outputAcuteChars.clear();
+    
+    kumarExpressions.clear();
+    kumarExpressionsCount.clear();
+    kumarExpressionsCountDec.clear();
     
     whiteSpacesCount = 0 ;
     tildesCount = 0 ;

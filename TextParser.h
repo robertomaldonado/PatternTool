@@ -34,16 +34,36 @@ public:
     void generateCharacters(); //Genera caracteres de puntuacion 
     void generateAcuteChars(); //Caracteres tildados
     void generateMultipleChars(); //Caracteres tildados
+    void generateKumarExpressions(); //Caracteres tildados
     
+    int getParagraphs(std::string text);
+    int getNumberWords();
+    int getAvgWordLength();
+    int getSentencesMessage();
+    double getDotPerPar();
+    double getCommaPerPar();
+    double getColonPerPar();
+    double getSemicolonPerPar();
+    double getQosPerPar();
+    double getMultipleQosPerPar();
+    double getWordsPerPar();
+    double getWordsPerSent();
+    double getWsPerSent();
+    void getAverages();
     //void compareCharactersToFile();
     void compareChars(std::vector<std::string>& toCompare); //Compara los caracteres comunes 
     void compareAcuteChars(std::vector<std::string>& toCompare); //Compara los caracteres acentuados
+    
+    void compareMultipleChars(std::vector<std::string>& toCompare);
+    void compareKumarExpressions(std::vector<std::string>& toCompare);
+    void addKumarAvg();
+    
     void generateOutputChars(); //Almacena nombres representativos para los graficos
     void generateAcuteOutputChars(); //Almacena nombres representativos para los graficos
+    void generateMultipleOutputChars();
     
     void refineResults();
-    
-    
+   
     void writeFilePlot(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name); //Escribe al file para lectura
     void writeFilePlotTildes(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
     //int inspectChars(std::vector<std::string>& p);
@@ -70,9 +90,13 @@ public:
     //std::vector<std::string> uniqueWordsVector; //Vector de palabras  o simbolos unicos
     //std::vector<int> uniqueWordsVectorCount; //Cuenta de palabras para cada uno de las palabras o simbolos
     
+    
+    std::vector<std::string> averagesVector; 
+    
     std::vector<std::string> acuteChars; //Caracteres acentuados
     std::vector<std::string> commonChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> multipleChars; //Cualquier otro caracter. Puntuacion o matematico.
+    std::vector<std::string> kumarExpressions;
     
     std::vector<std::string> outputCommonChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> outputAcuteChars;
@@ -80,10 +104,14 @@ public:
     std::vector<int> commonCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> acuteCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> multipleCharsCount; //Cuenta de todos los caracteres asi sean 0.
+    std::vector<int> kumarExpressionsCount;
+  //  averageVectorCount
     
     std::vector<double> commonCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
     std::vector<double> acuteCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
     std::vector<double> multipleCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
+    std::vector<double> kumarExpressionsCountDec;
+    std::vector<double> averageVectorCountDec;
 };
 #endif	/* TEXTPARSER_H */
 

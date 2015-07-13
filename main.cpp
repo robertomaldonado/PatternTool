@@ -60,9 +60,13 @@ int main(int argc, char** argv) {
         reader.generateOutputChars();//Cargar en memoria notacion reconocible
         reader.generateAcuteOutputChars();
         reader.generateMultipleChars();
+        reader.generateMultipleOutputChars();
+        reader.generateKumarExpressions();//Debug
         
         reader.compareChars(reader.wordsVector); //Utiliza variable tipo size_t y compara con npos
         reader.compareAcuteChars(reader.wordsVector); //Utiliza variable tipo size_t y compara con npos  
+        reader.compareMultipleChars(reader.wordsVector);
+        reader.compareKumarExpressions(reader.wordsVector);
         
         reader.countSpaces(listNames[i-1]);
         reader.countTildes(reader.acuteCharsCount);
@@ -78,6 +82,7 @@ int main(int argc, char** argv) {
         reader.writeFilePlot(reader.outputCommonChars, reader.commonCharsCount, name);//Escribir al archivo plot.txt
         reader.writeFilePlotTildes(reader.outputAcuteChars, reader.acuteCharsCount, name);
         }
+        
         if(debugMode == 1){
             
                 reader.printStr(reader.wholeText);
@@ -85,10 +90,15 @@ int main(int argc, char** argv) {
                 reader.printVectorCombined(reader.acuteChars,reader.acuteCharsCount);//Debug
                 reader.printVectorCombined(reader.commonChars,reader.commonCharsCount);//Debug
                 reader.printVectorCombined(reader.multipleChars,reader.multipleCharsCount);//Debug
-                cout << "Cuenta de espacios: " << reader.whiteSpacesCount << ". Cuenta de tildes: " << reader.tildesCount << endl;
+                reader.printVectorCombined(reader.kumarExpressions,reader.kumarExpressionsCount);//Debug
+              
+                //  cout << "Cuenta de espacios: " << reader.whiteSpacesCount << ".\n Cuenta de tildes: " << reader.tildesCount << endl;
+                cout << "Cuenta de parrafos "<< reader.getParagraphs(reader.wholeText) << endl; 
+                cout << "Cuenta de palabras: "<< reader.getNumberWords() << endl; 
+                cout << "Long. promedio palabra: "<< reader.getAvgWordLength() << endl;
+                cout << "Oraciones identificadas: "<< reader.getSentencesMessage() << endl;
+                cout << "Puntos por parrafo: " << reader.getDotPerPar();
         }
-        
-        
         
         cout << endl <<  "Archivo(s) Procesado(s): " << name <<"plot.txt" << endl; //Debugging
         cout << endl <<  "Archivo(s) Procesado(s): " << name <<"plot_tildes.txt" << endl; //Debugging
