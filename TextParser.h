@@ -16,7 +16,7 @@ public:
     void LoadWholeText(std::string);
     
     //Debugging (Mostrar datos en  consola) 
-    void countTildes( std::vector<int> & v );
+    double countTildes( std::vector<int> & v );
     void countSpaces(std::string);
     void printStr( std::string st );
     void printVectorStr( std::vector<std::string>& v );
@@ -33,7 +33,7 @@ public:
     //void generateSpecialCharacters();
     void generateCharacters(); //Genera caracteres de puntuacion 
     void generateAcuteChars(); //Caracteres tildados
-    void generateMultipleChars(); //Caracteres tildados
+    void generateMultipleChars(); //Caracteres multiples
     void generateKumarExpressions(); //Caracteres tildados
     
     int getParagraphs(std::string text);
@@ -49,18 +49,29 @@ public:
     double getWordsPerPar();
     double getWordsPerSent();
     double getWsPerSent();
+    double getSpaceBeforeCommaAvg();
+    double getSpaceBeforeComma(std::vector<std::string>& v );
+    double getSpaceAfterComma(std::vector<std::string>& v );
     void getAverages();
+    
+    
+    void getTotals();
+    
     //void compareCharactersToFile();
     void compareChars(std::vector<std::string>& toCompare); //Compara los caracteres comunes 
     void compareAcuteChars(std::vector<std::string>& toCompare); //Compara los caracteres acentuados
-    
     void compareMultipleChars(std::vector<std::string>& toCompare);
     void compareKumarExpressions(std::vector<std::string>& toCompare);
+    
     void addKumarAvg();
     
     void generateOutputChars(); //Almacena nombres representativos para los graficos
     void generateAcuteOutputChars(); //Almacena nombres representativos para los graficos
     void generateMultipleOutputChars();
+    void generateOutputAverageVector();
+    
+    //void generateTotalsVector();
+    void generateOutputTotalsVector();
     
     void refineResults();
    
@@ -68,8 +79,8 @@ public:
     void writeFilePlotTildes(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
     //int inspectChars(std::vector<std::string>& p);
     
-    void writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name); //Escribe al file para lectura
-    void writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name);
+    void writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name,  std::string ext); //Escribe al file para lectura
+    void writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name,  std::string ext);
     
     //void writeFile(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
     //void writeFile2(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
@@ -100,6 +111,8 @@ public:
     
     std::vector<std::string> outputCommonChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> outputAcuteChars;
+    std::vector<std::string> outputAverageVector;
+    std::vector<std::string> outputTotalsVector;
     
     std::vector<int> commonCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> acuteCharsCount; //Cuenta de todos los caracteres asi sean 0.
@@ -112,6 +125,7 @@ public:
     std::vector<double> multipleCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
     std::vector<double> kumarExpressionsCountDec;
     std::vector<double> averageVectorCountDec;
+    std::vector<double> totalsVectorCountDec;
 };
 #endif	/* TEXTPARSER_H */
 

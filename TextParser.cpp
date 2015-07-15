@@ -1,4 +1,3 @@
-
 /*
  TextParser
 
@@ -153,17 +152,19 @@ void TextParser::breakUpWords(string word){
 }
 
 
- void TextParser::countTildes(std::vector<int> & v){
-  
+ double TextParser::countTildes(std::vector<int> & v){
+     double tildes = 0 ; 
+     
      for (int i = 0; i < v.size(); i++)
         {
-          tildesCount = tildesCount + v[i];
-         // cout << "Valor de tildes: " << tildesCount << endl;
+          tildes = tildes + v[i];
         }
+     return tildes;
      
  }
 
 void TextParser::countSpaces(std::string fileName){
+   
     
    ifstream inputFile (fileName);
    
@@ -375,15 +376,16 @@ void TextParser::compareMultipleChars(std::vector<std::string>& toCompare){
     for(int i = 0 ; i < acuteCharsCount.size() ; i++){
         multipleCharsCount[0] += acuteCharsCount[i];
     }
-        multipleCharsCount[1] = 9 ; //Correguir
+       multipleCharsCount[1] = 9 ; //Correguir
         
     for (int i = 0; i < toCompare.size() ; i++){
-        for (int k=2; k < multipleChars.size() ; k++){
+        for (int k=0; k < multipleChars.size() ; k++){
                 std::size_t pos = toCompare[i].find(multipleChars[k]);
                 if (pos!=std::string::npos)
                 {
                 multipleCharsCount[k] =  multipleCharsCount[k]+1;
-                pos = 0;
+                //pos = 0;
+                //break;
                 }
         }
     }
@@ -495,13 +497,76 @@ double TextParser::getWsPerSent(){
     double wsPS = wordsVector.size() / (double)getSentencesMessage() ;
     return wsPS;
 }
+double TextParser::getSpaceBeforeComma(std::vector<std::string>& v ){
+    
+    double cBs = 0;
+    for(int i = 0 ; i < v.size(); i++){
+       // cout<< "CUIDADO: " << v[i].compare(",") << endl; 
+        if(v[i].compare(",") == 0){
+          cBs +=1; 
+        }
+        
+    }
+    return cBs;
+    
+}
+double TextParser::getSpaceAfterComma(std::vector<std::string>& v ){
+    
+    double sAc = 0;
+//    for(int i = 0 ; i < v.size(); i++){
+//        if(v[i].compare(",") == 0){
+//          cBs +=1; 
+//        }
+//        
+//    }
+    return sAc;
+    
+}
+double TextParser::getSpaceBeforeCommaAvg(){
+    double cBs = getSpaceBeforeComma(wordsVector) / (double) wordsVector.size() ;
+    return cBs;
+}
 
 void TextParser::getAverages(){
     
+    averageVectorCountDec.push_back( getAvgWordLength() );
     averageVectorCountDec.push_back( getWordsPerSent() );
     averageVectorCountDec.push_back( getWordsPerPar() );
+    averageVectorCountDec.push_back( getDotPerPar() );
+    averageVectorCountDec.push_back( getCommaPerPar()  );
+    averageVectorCountDec.push_back( getColonPerPar() );
+    averageVectorCountDec.push_back( getSemicolonPerPar()  );
+    averageVectorCountDec.push_back( getQosPerPar() );
+    averageVectorCountDec.push_back( getMultipleQosPerPar() );
+    averageVectorCountDec.push_back( 0 );//51
+    averageVectorCountDec.push_back( kumarExpressionsCount[0]/(double)wordsVector.size() );    
+    averageVectorCountDec.push_back( kumarExpressionsCount[1]/(double)wordsVector.size() );
+    averageVectorCountDec.push_back( kumarExpressionsCount[2]/(double)wordsVector.size() );
+    averageVectorCountDec.push_back( (double)commonCharsCount[0] );
+    averageVectorCountDec.push_back( (double)commonCharsCount[2] );
+    averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() );
+    
 }
+void TextParser::getTotals(){
+    
+        totalsVectorCountDec.push_back( 0 );
+        totalsVectorCountDec.push_back(0);
+        totalsVectorCountDec.push_back( getNumberWords() );
+        totalsVectorCountDec.push_back( getSentencesMessage() );
+        totalsVectorCountDec.push_back( getParagraphs(wholeText) );
+        totalsVectorCountDec.push_back( countTildes(acuteCharsCount) );
+        totalsVectorCountDec.push_back( whiteSpacesCount );
+        totalsVectorCountDec.push_back( multipleCharsCount[2]);
+        totalsVectorCountDec.push_back( multipleCharsCount[3]);
+        totalsVectorCountDec.push_back(multipleCharsCount[4]);
+        totalsVectorCountDec.push_back(0);
+        totalsVectorCountDec.push_back( (double)kumarExpressionsCount[0] );
+        totalsVectorCountDec.push_back((double)kumarExpressionsCount[1]);
+        totalsVectorCountDec.push_back((double)kumarExpressionsCount[2]);
+        totalsVectorCountDec.push_back( getSpaceAfterComma(wordsVector) );
+        totalsVectorCountDec.push_back( getSpaceBeforeComma(wordsVector) );
 
+}
 //void TextParser::compareMultipleChars(std::string toCompare){
 //    
 //    std::string comp = "";
@@ -632,6 +697,49 @@ void TextParser::generateMultipleOutputChars(){
 
 }
 
+void TextParser::generateOutputAverageVector(){
+
+    outputAverageVector.push_back( "AWL");
+    outputAverageVector.push_back("AWPS");
+    outputAverageVector.push_back("AWPP");
+    outputAverageVector.push_back("ADPP");
+    outputAverageVector.push_back("ACPP");
+    outputAverageVector.push_back("ACOPP");
+    outputAverageVector.push_back("ASCPP");
+    outputAverageVector.push_back("AQPP");
+    outputAverageVector.push_back("AMQPP");
+    outputAverageVector.push_back("AWSPS");
+    outputAverageVector.push_back("AK1");
+    outputAverageVector.push_back("AK2");
+    outputAverageVector.push_back("AK3");
+    outputAverageVector.push_back("AWS");
+    outputAverageVector.push_back("ACAS");
+    outputAverageVector.push_back("ACBS");
+
+}
+
+void TextParser::generateOutputTotalsVector(){
+    
+        outputTotalsVector.push_back("TUS");
+        outputTotalsVector.push_back("TLS");
+        outputTotalsVector.push_back("TNW");
+        outputTotalsVector.push_back("TNS");
+        outputTotalsVector.push_back("TNP");
+        outputTotalsVector.push_back("TNT");
+        outputTotalsVector.push_back("TNWS");
+        
+        outputTotalsVector.push_back("TNMQ");
+        outputTotalsVector.push_back("TNME");
+        outputTotalsVector.push_back("TNE");
+        outputTotalsVector.push_back("TNWAP");
+        outputTotalsVector.push_back("TNK1");
+        outputTotalsVector.push_back("TNK2");
+        outputTotalsVector.push_back("TNK3");
+        outputTotalsVector.push_back("TNCBS");
+        outputTotalsVector.push_back("TNCAS");
+
+}
+
 void TextParser::refineResults(){
   
      for (int i = 0; i < acuteCharsCount.size() ; i++)
@@ -709,13 +817,13 @@ void TextParser::writeFilePlotTildes(std::vector<std::string>& v1 , std::vector<
     myfile.close();   
 }
 
-void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name){
+void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name, std::string ext){
     //Manjeador de archivo
     ofstream myfile;
     
     //Nombre del archivo de salida generado
     string outputName = name; //cambiar a default
-    outputName.append("plot.txt");
+    outputName.append(ext);
     
     //Abrir el archivo
     myfile.open(outputName);
@@ -735,13 +843,13 @@ void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<doubl
     myfile.close();   
 }
 
-void TextParser::writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name){
+void TextParser::writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name, std::string ext){
     //Manjeador de archivo
     ofstream myfile;
     
     //Nombre del archivo de salida generado
     string outputName = name; //cambiar a default
-    outputName.append("plot_tildes.txt");
+    outputName.append(ext);
     
     //Abrir el archivo
     myfile.open(outputName);
@@ -773,6 +881,7 @@ void TextParser::resetVariables(){
     commonCharsCount.clear();
     commonCharsCountDec.clear();
     commonChars.clear();
+    averageVectorCountDec.clear();
     
     acuteCharsCount.clear();
     acuteCharsCountDec.clear();
@@ -784,10 +893,15 @@ void TextParser::resetVariables(){
     
     outputCommonChars.clear();
     outputAcuteChars.clear();
+    outputAverageVector.clear();
+    outputTotalsVector.clear();
     
     kumarExpressions.clear();
     kumarExpressionsCount.clear();
     kumarExpressionsCountDec.clear();
+    
+    totalsVectorCountDec.clear();
+    //totalsVector.clear();
     
     whiteSpacesCount = 0 ;
     tildesCount = 0 ;

@@ -69,13 +69,20 @@ int main(int argc, char** argv) {
         reader.compareKumarExpressions(reader.wordsVector);
         
         reader.countSpaces(listNames[i-1]);
-        reader.countTildes(reader.acuteCharsCount);
+        //reader.countTildes(reader.acuteCharsCount);
+        
+        reader.generateOutputAverageVector();
+        reader.getAverages();
+        
+        reader.generateOutputTotalsVector();
+        reader.getTotals();
         
         if(mode!=0){
             
             reader.refineResults();    
-            reader.writeFilePlot2(reader.outputCommonChars, reader.commonCharsCountDec, name);//Escribir al archivo plot.txt
-            reader.writeFilePlotTildes2(reader.outputAcuteChars, reader.acuteCharsCountDec, name);
+            reader.writeFilePlot2(reader.outputCommonChars, reader.commonCharsCountDec, name, "plot.txt");//Escribir al archivo plot.txt
+            reader.writeFilePlot2(reader.outputAverageVector, reader.averageVectorCountDec, name, "plot_averages.txt");
+            reader.writeFilePlot2(reader.outputTotalsVector, reader.totalsVectorCountDec , name, "plot_totales.txt");
             
         }else{
         
@@ -93,8 +100,8 @@ int main(int argc, char** argv) {
                 reader.printVectorCombined(reader.kumarExpressions,reader.kumarExpressionsCount);//Debug
               
                 //  cout << "Cuenta de espacios: " << reader.whiteSpacesCount << ".\n Cuenta de tildes: " << reader.tildesCount << endl;
-                cout << "Cuenta de parrafos "<< reader.getParagraphs(reader.wholeText) << endl; 
-                cout << "Cuenta de palabras: "<< reader.getNumberWords() << endl; 
+                //cout << "Cuenta de parrafos "<< reader.getParagraphs(reader.wholeText) << endl; 
+                //cout << "Cuenta de palabras: "<< reader.getNumberWords() << endl; 
                 cout << "Long. promedio palabra: "<< reader.getAvgWordLength() << endl;
                 cout << "Oraciones identificadas: "<< reader.getSentencesMessage() << endl;
                 cout << "Puntos por parrafo: " << reader.getDotPerPar();

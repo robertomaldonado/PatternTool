@@ -28,12 +28,33 @@ echo "Directorio 4"
 cd ..
 echo "Fin del 4to plot"
 
-echo "Incio de plot Tildes"
+echo "Incio de plot Promedios"
 cd plot5
-./plotTildes.sh
+./plotAverages1.sh
 echo "Directorio 5"
 cd ..
 echo "Fin del 5to plot"
+
+echo "Continuacion de plot Promedios"
+cd plot6
+./plotAverages2.sh
+echo "Directorio 6"
+cd ..
+echo "Fin del 6to plot"
+
+echo "Incio de plot Totales"
+cd plot7
+./plotTotales1.sh
+echo "Directorio 7"
+cd ..
+echo "Fin del 7mo plot"
+
+echo "Continuacion de plot Totales"
+cd plot8
+./plotTotales2.sh
+echo "Directorio 8"
+cd ..
+echo "Fin del 8vo plot"
 
 
 

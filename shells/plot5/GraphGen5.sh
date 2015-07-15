@@ -5,7 +5,7 @@ filename=.temp3.data
 echo "set terminal postscript eps enhanced solid color \"FreeSans\" 20" > $filename
 
  #echo "set terminal jpeg size 1024,768;" > $filename
-echo "set output '../syntactical/AccentedCharacters.eps';">> $filename
+echo "set output '../syntactical/Averages1.eps';">> $filename
 
 echo "set termoption dashed" >> $filename
 
@@ -21,7 +21,7 @@ echo "set style  data linespoints" >> $filename
 
 echo "set xtics font \"FreeSans,16\"" >> $filename
 #echo "set xtics(1) font \"FreeSans,20\"" >> $filename
-echo "set xtics('MAA' 1 , 'MAE' 2, 'MAI' 3 , 'MAO' 4, 'MAU' 5 , 'MIA' 6, 'MIE' 7 , 'MII' 8, 'MIO' 9 , 'MIU' 10 ) font \"FreeSans,16\"" >> $filename
+echo "set xtics('AWL' 1 , 'AWPS' 2, 'AWPP' 3 , 'ADPP' 4, 'ACPP' 5 , 'ACOPP' 6, 'ASCPP' 7 , 'AQPP' 8 ) font \"FreeSans,16\"" >> $filename
 echo "set ytics font \"FreeSans,16\"" >> $filename
 
 echo "set grid" >> $filename

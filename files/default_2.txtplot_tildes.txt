@@ -1,2 +1,33 @@
-##### CATEGORIA ACENTOS GLOBALES ####
-FILE files/default_2.txt MAA 0 MAE 0 MAI 0 MAO 0 MAU 0 MIA 0 MIE 0 MII 1.50376 MIO 1.50376 MIU 0 TLD 6.94529e-310 WSM 6.95322e-310 MQM 6.94549e-310 MQM 6.95314e-310 MEL 6.95322e-310 
+##### CATEGORIA SIMBOLOS GLOBALES ####
+PPD: Punctuation Period
+PCN: Punctuation Colon
+PCA: Punctuation Comma
+PSC: Punctuation Semicolon
+EEO: Expression Exclamation Open
+EEC: Expression Exclamation Close
+EQO: Expression Question Open
+EQC: Expression Question Close
+MPS: Mathematical Plus
+MMS: Mathematical Minus
+MTS: Mathematical Times
+MMO: Mathematical Modulus
+MEQ: Mathematical Equals
+MGR: Mathematical Greater
+MLR: Mathematical Lesser
+MDN: Mathematical Division
+GPO: Grouping Parenthesis Open
+GPC: Grouping Parenthesis Close
+GCO: Grouping Curly Bracket Open
+GCC: Grouping XCurly Bracket Close
+GBO: Grouping Bracket Open
+GBC: Grouping Bracket Close
+OBS: Other Back Slash
+OAA: Other Arroba
+ONS: Other Number Symbol
+ODS: Other Dollar Sign
+OHO: Other Carret
+ONP: Other Ampersand
+OVD: Other Pipe
+
+
+FILE files/default_2.txt AWL 4 AWPS 11.7 AWPP 14.625 ADPP 0.875 ACPP 0.75 ACOPP 0 ASCPP 0 AQPP 0 AMQPP 0.25 AK1 0.017094 AK2 0 AK3 0.00854701 AWS 7 ACAS 6 ACBS 0.00854701 AWL 4 AWPS 11.0833 AWPP 12.0909 ADPP 0.727273 ACPP 0.454545 ACOPP 0 ASCPP 0 AQPP 0 AMQPP 0.181818 AK1 0 AK2 0 AK3 0 AWS 8 ACAS 5 ACBS 0 
