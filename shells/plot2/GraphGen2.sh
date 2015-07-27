@@ -14,7 +14,7 @@ echo "set style line 2 lt 2 lc 1 lw 3 " >> $filename # red = lc 1
 echo "set style line 3 lt 3 lc 4 lw 3 " >> $filename
 echo "set style line 4 lt 3 lc 5 lw 3 " >> $filename
 echo "set style line 5 lt 8 lc 7 lw 3 " >> $filename #
-echo "set style line 6 lt 8 lc 6 lw 3 " >> $filename #
+#echo "set style line 6 lt 8 lc 6 lw 3 " >> $filename #
 
 echo "set style  data linespoints" >> $filename
 
@@ -33,7 +33,7 @@ echo "set boxwidth 0.90 relative" >> $filename
  echo "set xlabel \"Parameters\" font \"FreeSans,18\"" >> $filename
  echo "set ylabel \"Repetition Index \" font \"FreeSans,18\"" >> $filename
 
-echo "plot  'estadisticaGlobalIndiv1.dat' ls 1 title 'Author1', 'estadisticaGlobalIndiv2.dat' ls 2 title 'Author2 T1','estadisticaGlobalIndiv3.dat'  ls 4 title 'Author2 T2', 'estadisticaGlobalIndiv4.dat' ls 3 title 'Author2 T3', 'estadisticaGlobalIndiv5.dat' ls 5 title 'Author2 T4','estadisticaGlobal.dat' ls 6 title 'Average A2' " >> $filename
+echo "plot  'estadisticaGlobalIndiv1.dat' ls 1 title 'Author1', 'estadisticaGlobalIndiv2.dat' ls 2 title 'Author2 T1','estadisticaGlobalIndiv3.dat'  ls 3 title 'Author2 T2', 'estadisticaGlobalIndiv4.dat' ls 4 title 'Author2 T3','estadisticaGlobal.dat' ls 5 title 'Average A2' " >> $filename
 
 gnuplot $filename
 rm -Rf $filename

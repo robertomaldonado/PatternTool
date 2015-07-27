@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Analyzer.h</itemPath>
       <itemPath>FileHandler.h</itemPath>
       <itemPath>TextParser.h</itemPath>
     </logicalFolder>
@@ -25,6 +26,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Analyzer.cpp</itemPath>
       <itemPath>FileHandler.cpp</itemPath>
       <itemPath>TextParser.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -51,6 +53,10 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Analyzer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Analyzer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FileHandler.h" ex="false" tool="3" flavor2="0">
@@ -96,6 +102,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Analyzer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Analyzer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FileHandler.h" ex="false" tool="3" flavor2="0">

@@ -9,7 +9,7 @@
  */
 
 #include <iostream>
-
+#include <cmath>
 #include <string>
 #include <iomanip>
 #include <fstream>
@@ -178,7 +178,6 @@ void TextParser::countSpaces(std::string fileName){
         {
             if (line[i] == ' ' )
                 whiteSpacesCount++;
-            
         }
     }
 
@@ -352,6 +351,25 @@ void TextParser::generateKumarExpressions(){
    for (int i = 0; i < kumarExpressions.size() ; i++){     
         kumarExpressionsCount.push_back(0);  //Inicializar todo a cero
         kumarExpressionsCountDec.push_back(0);
+   }
+}
+
+void TextParser::generateNumericalCharacters(){
+    
+    numericalChars.push_back("0");
+    numericalChars.push_back("1");
+    numericalChars.push_back("2");
+    numericalChars.push_back("3");
+    numericalChars.push_back("4");
+    numericalChars.push_back("5");
+    numericalChars.push_back("6");
+    numericalChars.push_back("7");
+    numericalChars.push_back("8");
+    numericalChars.push_back("9");
+
+    for (int i = 0; i < numericalChars.size() ; i++){    
+        
+        numericalCharsCountDec.push_back(0);  
    }
 }
 
@@ -538,28 +556,28 @@ void TextParser::getAverages(){
     averageVectorCountDec.push_back( getSemicolonPerPar()  );
     averageVectorCountDec.push_back( getQosPerPar() );
     averageVectorCountDec.push_back( getMultipleQosPerPar() );
-    averageVectorCountDec.push_back( 0 );//51
+    averageVectorCountDec.push_back( 0 );//51 whitespace per sentence
     averageVectorCountDec.push_back( kumarExpressionsCount[0]/(double)wordsVector.size() );    
     averageVectorCountDec.push_back( kumarExpressionsCount[1]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( kumarExpressionsCount[2]/(double)wordsVector.size() );
-    averageVectorCountDec.push_back( (double)commonCharsCount[0] );
-    averageVectorCountDec.push_back( (double)commonCharsCount[2] );
-    averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() );
+    averageVectorCountDec.push_back( commonCharsCount[0]/(double)wordsVector.size() );
+    averageVectorCountDec.push_back( commonCharsCount[2]/(double)wordsVector.size() );
+    averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() ); //Falta mejorar
     
 }
 void TextParser::getTotals(){
     
-        totalsVectorCountDec.push_back( 0 );
-        totalsVectorCountDec.push_back(0);
+        totalsVectorCountDec.push_back( 0 ); //Sentences begin w/ UpperC
+        totalsVectorCountDec.push_back(0); //Sentences begin w/ LowerC
         totalsVectorCountDec.push_back( getNumberWords() );
         totalsVectorCountDec.push_back( getSentencesMessage() );
         totalsVectorCountDec.push_back( getParagraphs(wholeText) );
         totalsVectorCountDec.push_back( countTildes(acuteCharsCount) );
-        totalsVectorCountDec.push_back( whiteSpacesCount );
+        totalsVectorCountDec.push_back( wordsVector.size() );
         totalsVectorCountDec.push_back( multipleCharsCount[2]);
         totalsVectorCountDec.push_back( multipleCharsCount[3]);
         totalsVectorCountDec.push_back(multipleCharsCount[4]);
-        totalsVectorCountDec.push_back(0);
+        totalsVectorCountDec.push_back(0); //Number of whitespaces
         totalsVectorCountDec.push_back( (double)kumarExpressionsCount[0] );
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[1]);
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[2]);
@@ -567,32 +585,7 @@ void TextParser::getTotals(){
         totalsVectorCountDec.push_back( getSpaceBeforeComma(wordsVector) );
 
 }
-//void TextParser::compareMultipleChars(std::string toCompare){
-//    
-//    std::string comp = "";
-//            
-//    for (int i = 0; i+2 < toCompare.size() ; i++)
-//    {
-//         comp = toCompare.substr(i,i+2);
-//        
-//        //cout << comp;
-//        
-//        for(int k=0; k < multipleChars.size() ; k++){
-//           
-//               // cout<<"Compare " << multipleChars[k] << " against " << comp << endl;
-//               // cout << "Valore de salida son : " <<i << ", " << k << endl; 
-//                
-//                if(comp.compare(multipleChars[k]) == 0){
-//        
-//                        multipleCharsCount[k] =  multipleCharsCount[k]+1;
-//                //        cout<<"Success!!!!!!" << multipleChars[k] << endl;
-//                }
-//                std::size_t pos = comp.find("...");
-//                
-//          //  }
-//        }
-//    }
-//}
+
 void TextParser::compareAcuteChars(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
 
     for (int i = 0; i < toCompare.size() ; i++){
@@ -613,6 +606,58 @@ void TextParser::compareAcuteChars(std::vector<std::string>& toCompare){ //Metod
         }
     }
 
+}
+
+void TextParser::compareNumericalChars(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
+
+    int zero = 0, one = 0, two = 0 , three= 0, four= 0, five= 0, six= 0, seven= 0, eight= 0, nine= 0 ;
+    int total = 0;
+    
+    for (int i = 0; i < toCompare.size() ; i++){
+                
+         zero += count(toCompare[i].begin(), toCompare[i].end(), '0');
+         one += count(toCompare[i].begin(), toCompare[i].end(), '1');
+         two += count(toCompare[i].begin(), toCompare[i].end(), '2');
+         three += count(toCompare[i].begin(), toCompare[i].end(), '3');
+         four += count(toCompare[i].begin(), toCompare[i].end(), '4');
+         five += count(toCompare[i].begin(), toCompare[i].end(), '5');
+         six += count(toCompare[i].begin(), toCompare[i].end(), '6');
+         seven += count(toCompare[i].begin(), toCompare[i].end(),'7');
+         eight += count(toCompare[i].begin(), toCompare[i].end(), '8');
+         nine += count(toCompare[i].begin(), toCompare[i].end(), '9');
+         //break;
+        // cout << "Contando carateres 0.." << c <<endl;
+
+    }
+    
+    total = zero + one + two + three + four + five + six + seven + eight + nine;
+    //cout << "Total de numericos son: " << total <<endl;
+    
+    numericalCharsCountDec[0]= zero;
+    numericalCharsCountDec[1]= one;
+    numericalCharsCountDec[2]= two;
+    numericalCharsCountDec[3]= three;
+    numericalCharsCountDec[4]= four;
+    numericalCharsCountDec[5]= five;
+    numericalCharsCountDec[6]= six;
+    numericalCharsCountDec[7]= seven;
+    numericalCharsCountDec[8]= eight;
+    numericalCharsCountDec[9]= nine;
+    
+}
+void TextParser::generateNumericalOutputChars(){
+    
+    outputNumericalChars.push_back("ZERO");
+    outputNumericalChars.push_back("ONE");
+    outputNumericalChars.push_back("TWO");
+    outputNumericalChars.push_back("THREE");
+    outputNumericalChars.push_back("FOUR");
+    outputNumericalChars.push_back("FIVE");
+    outputNumericalChars.push_back("SIX");
+    outputNumericalChars.push_back("SEVEN");
+    outputNumericalChars.push_back("EIGHT");
+    outputNumericalChars.push_back("NINE");
+    
 }
 
 //Dar formato al archivo de plot. Notacion reconocible por programas del shellScripting
@@ -762,6 +807,11 @@ void TextParser::refineResults(){
      {
          kumarExpressionsCountDec[m] = (kumarExpressionsCount[m]/(double)wordsVector.size())*100;
      }
+     
+     for (int n = 0; n < numericalCharsCountDec.size() ; n++)
+     {
+         numericalCharsCountDec[n] = (numericalCharsCountDec[n]/(double)wordsVector.size())*100;
+     }
     
 }
 
@@ -834,7 +884,7 @@ void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<doubl
     myfile << "PPD: Punctuation Period\nPCN: Punctuation Colon\nPCA: Punctuation Comma\nPSC: Punctuation Semicolon\nEEO: Expression Exclamation Open\nEEC: Expression Exclamation Close\nEQO: Expression Question Open\nEQC: Expression Question Close\nMPS: Mathematical Plus\nMMS: Mathematical Minus\nMTS: Mathematical Times\nMMO: Mathematical Modulus\nMEQ: Mathematical Equals\nMGR: Mathematical Greater\nMLR: Mathematical Lesser\nMDN: Mathematical Division\nGPO: Grouping Parenthesis Open\nGPC: Grouping Parenthesis Close\nGCO: Grouping Curly Bracket Open\nGCC: Grouping XCurly Bracket Close\nGBO: Grouping Bracket Open\nGBC: Grouping Bracket Close\nOBS: Other Back Slash\nOAA: Other Arroba\nONS: Other Number Symbol\nODS: Other Dollar Sign\nOHO: Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
     
     myfile << "FILE " << name <<" ";
-    for (int i = 0; i < v1.size(); i++) //Iterara sobre todas las palabras
+    for (int i = 0; i < v2.size(); i++) //Iterara sobre todas las palabras
     {
         myfile << v1[i] << " " << v2[i]<< " ";
     }//end for
@@ -903,6 +953,21 @@ void TextParser::resetVariables(){
     totalsVectorCountDec.clear();
     //totalsVector.clear();
     
+    mainVector.clear();
+    
     whiteSpacesCount = 0 ;
     tildesCount = 0 ;
+    
+    numericalCharsCountDec.clear();
+    numericalChars.clear();
+    outputNumericalChars.clear();
+    
+}
+
+void TextParser::mergeVectors(std::vector<double>& v0, std::vector<double>& v1, std::vector<double>& v2 , std::vector<double>& v3){
+
+    v1.insert(v1.end(), v2.begin(), v2.end());
+    v0.insert(v0.end(), v1.begin(), v1.end());
+    v0.insert(v0.end(), v3.begin(), v3.end());
+    
 }
