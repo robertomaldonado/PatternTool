@@ -1,0 +1,33 @@
+##### CATEGORIA SIMBOLOS GLOBALES ####
+PPD: Punctuation Period
+PCN: Punctuation Colon
+PCA: Punctuation Comma
+PSC: Punctuation Semicolon
+EEO: Expression Exclamation Open
+EEC: Expression Exclamation Close
+EQO: Expression Question Open
+EQC: Expression Question Close
+MPS: Mathematical Plus
+MMS: Mathematical Minus
+MTS: Mathematical Times
+MMO: Mathematical Modulus
+MEQ: Mathematical Equals
+MGR: Mathematical Greater
+MLR: Mathematical Lesser
+MDN: Mathematical Division
+GPO: Grouping Parenthesis Open
+GPC: Grouping Parenthesis Close
+GCO: Grouping Curly Bracket Open
+GCC: Grouping XCurly Bracket Close
+GBO: Grouping Bracket Open
+GBC: Grouping Bracket Close
+OBS: Other Back Slash
+OAA: Other Arroba
+ONS: Other Number Symbol
+ODS: Other Dollar Sign
+OHO: Other Carret
+ONP: Other Ampersand
+OVD: Other Pipe
+
+
+FILE files/default_5.txt TUS 0 TLS 0 TNW 61 TNS 5 TNP 8 TNT 4 TNWS 61 TNMQ 0 TNME 0 TNE 0 TNWAP 0 TNK1 0 TNK2 0 TNK3 0 TNCBS 0 TNCAS 0 

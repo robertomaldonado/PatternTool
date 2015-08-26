@@ -3,11 +3,11 @@ PPD: Punctuation Period
 PCN: Punctuation Colon
 PCA: Punctuation Comma
 PSC: Punctuation Semicolon
-EEO: Expression Exclamation Open
+  EEO: Expression Exclamation Open
 EEC: Expression Exclamation Close
 EQO: Expression Question Open
 EQC: Expression Question Close
-MPS: Mathematical Plus
+  MPS: Mathematical Plus
 MMS: Mathematical Minus
 MTS: Mathematical Times
 MMO: Mathematical Modulus
@@ -15,13 +15,13 @@ MEQ: Mathematical Equals
 MGR: Mathematical Greater
 MLR: Mathematical Lesser
 MDN: Mathematical Division
-GPO: Grouping Parenthesis Open
+  GPO: Grouping Parenthesis Open
 GPC: Grouping Parenthesis Close
 GCO: Grouping Curly Bracket Open
 GCC: Grouping XCurly Bracket Close
 GBO: Grouping Bracket Open
 GBC: Grouping Bracket Close
-OBS: Other Back Slash
+  OBS: Other Back Slash
 OAA: Other Arroba
 ONS: Other Number Symbol
 ODS: Other Dollar Sign
@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_3.txt TUS 0 TLS 0 TNW 137 TNS 6 TNP 12 TNT 15 TNWS 137 TNMQ 0 TNME 0 TNE 0 TNWAP 0 TNK1 0 TNK2 0 TNK3 0 TNCBS 0 TNCAS 0 
+FILE files/default_3.txt TUS 0 TLS 0 TNW 137 TNS 6 TNP 12 TNT 15 TNWS 137 TNMQ 0 TNME 0 TNE 0 TNWAP 131 TNK1 0 TNK2 0 TNK3 0 TNCBS 0 TNCAS 0 

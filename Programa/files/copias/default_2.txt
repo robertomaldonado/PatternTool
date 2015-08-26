@@ -1,0 +1,8 @@
+Hola Mauricio,
+
+Te escribo con el fin de hacer una consulta.. 
+Estaba sacando una imagen de disco de Windows Vista, como resultado me da un archivo con extension .bin…  
+Sabes si este es el archivo con el cual puedo cargar el sistema  en una maquina virtual? o necesito convertir esto a un archivo .iso? También encontré los archivos .vhd  que me imagino se pueden cargar una vez que tengo el mismo OS cargado en la maquina virtual.
+
+Gracias,
+Roberto M.

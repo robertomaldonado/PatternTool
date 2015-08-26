@@ -3,11 +3,11 @@ PPD: Punctuation Period
 PCN: Punctuation Colon
 PCA: Punctuation Comma
 PSC: Punctuation Semicolon
-EEO: Expression Exclamation Open
+  EEO: Expression Exclamation Open
 EEC: Expression Exclamation Close
 EQO: Expression Question Open
 EQC: Expression Question Close
-MPS: Mathematical Plus
+  MPS: Mathematical Plus
 MMS: Mathematical Minus
 MTS: Mathematical Times
 MMO: Mathematical Modulus
@@ -15,13 +15,13 @@ MEQ: Mathematical Equals
 MGR: Mathematical Greater
 MLR: Mathematical Lesser
 MDN: Mathematical Division
-GPO: Grouping Parenthesis Open
+  GPO: Grouping Parenthesis Open
 GPC: Grouping Parenthesis Close
 GCO: Grouping Curly Bracket Open
 GCC: Grouping XCurly Bracket Close
 GBO: Grouping Bracket Open
 GBC: Grouping Bracket Close
-OBS: Other Back Slash
+  OBS: Other Back Slash
 OAA: Other Arroba
 ONS: Other Number Symbol
 ODS: Other Dollar Sign
@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_5.txt PPD nan PCN nan PCA nan PCS nan EEO nan EEC nan EQO nan EQC nan MPS nan MMS nan MTS nan MMO nan MEQ nan MGR nan MLR nan MDN nan GPO nan GPC nan GCO nan GCC nan GBO nan GBC nan OBS nan OAA nan ONS nan ODS nan OHO nan ONP nan OVD nan OPS nan OUS nan 
+FILE files/default_5.txt PPD 3.05344 PCN 0.763359 PCA 5.34351 PCS 0 EEO 0 EEC 0 EQO 0 EQC 0 MPS 0 MMS 0.763359 MTS 0 MMO 0 MEQ 0 MGR 0 MLR 0 MDN 0 GPO 2.29008 GPC 2.29008 GCO 0 GCC 0 GBO 0 GBC 0 OBS 0 OAA 0 ONS 0 ODS 0 OHO 0 ONP 0 OVD 0 OPS 0 OUS 0 

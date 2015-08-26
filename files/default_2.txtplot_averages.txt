@@ -3,11 +3,11 @@ PPD: Punctuation Period
 PCN: Punctuation Colon
 PCA: Punctuation Comma
 PSC: Punctuation Semicolon
-EEO: Expression Exclamation Open
+  EEO: Expression Exclamation Open
 EEC: Expression Exclamation Close
 EQO: Expression Question Open
 EQC: Expression Question Close
-MPS: Mathematical Plus
+  MPS: Mathematical Plus
 MMS: Mathematical Minus
 MTS: Mathematical Times
 MMO: Mathematical Modulus
@@ -15,13 +15,13 @@ MEQ: Mathematical Equals
 MGR: Mathematical Greater
 MLR: Mathematical Lesser
 MDN: Mathematical Division
-GPO: Grouping Parenthesis Open
+  GPO: Grouping Parenthesis Open
 GPC: Grouping Parenthesis Close
 GCO: Grouping Curly Bracket Open
 GCC: Grouping XCurly Bracket Close
 GBO: Grouping Bracket Open
 GBC: Grouping Bracket Close
-OBS: Other Back Slash
+  OBS: Other Back Slash
 OAA: Other Arroba
 ONS: Other Number Symbol
 ODS: Other Dollar Sign
@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_2.txt AWL 4 AWPS 13 AWPP 14.625 ADPP 0.875 ACPP 0.75 ACOPP 0 ASCPP 0 AQPP 0 AMQPP 0.125 AWSPS 0 AK1 0.017094 AK2 0 AK3 0.00854701 AWS 7 ACAS 6 ACBS 0.00854701 
+FILE files/default_2.txt AWL 5 AWPS 15.1429 AWPP 9.63636 ADPP 0.545455 ACPP 0.272727 ACOPP 0 ASCPP 0 AQPP 0 AMQPP 0.0909091 AWSPS 0.95283 AK1 0 AK2 0 AK3 0 AWS 0.0566038 ACAS 0.0283019 ACBS 0 
