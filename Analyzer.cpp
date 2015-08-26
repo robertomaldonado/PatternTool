@@ -75,11 +75,25 @@ double Analyzer::get_sum( std::vector<double> v1 ){
 
 }
 
-void Analyzer::performAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c){
+void Analyzer::performBinaryAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e){
 
     for(int i = 0 ; i < a.size() ;i++){ 
         
-        v[i] = (a[i] + b[i] + c[i])/(double)3 ;
+        v[i] = (a[i] + b[i] + c[i]+ d[i]+e[i])/(double)5 ;
+        
+        if( v[i] > 0 ){
+            v[i] = 1;
+        }
+    }
+    
+}
+
+
+void Analyzer::performAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e){
+
+    for(int i = 0 ; i < a.size() ;i++){ 
+        
+        v[i] = (a[i] + b[i] + c[i]+ d[i] + e[i])/(double)5 ;
         
     }
     
@@ -103,14 +117,22 @@ void Analyzer::performEquival(std::vector<double>& p, std::vector<double>& e, st
         }
        
     }
+}
 
+void Analyzer::printVectorCount(std::vector<double>& v){
+
+    for(int i = 0 ; i < v.size() ;i++){ 
+        
+        cout << "Contenido: " << v[i]<<endl;
+       
+    }
 }
 
 
 void Analyzer::performVectorW(std::vector<double>& p, std::vector<double>& vw, std::vector<double> d){
     
     double sum = 0;
-    
+    //promedios, vector_w ,arch0
     
     for(int i = 0; i < p.size() ; i++)
     {
@@ -130,8 +152,38 @@ void Analyzer::performVectorW(std::vector<double>& p, std::vector<double>& vw, s
 
 void Analyzer::performVectorXW(std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d){
     
+    //equival, vector_w, vector_xw, arch0
+    
     for(int i = 0 ; i < d.size() ;i++){ 
                 wx[i] =  e[i]*w[i] ;    
+    }
+    
+}
+
+void Analyzer::performVectorXWNumerical(std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d){
+    
+    double items = e.size();
+    
+    for(int i = 0 ; i < d.size() ;i++){ 
+                wx[i] =  e[i]*w[i] ;    
+                if(d[i] > 0){
+                    wx[i] += 100/items;
+                      //  break;
+                }
+    }
+
+    
+}
+
+void Analyzer::performVectorXWGreeting(std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d){
+    
+    //equival, vector_w, vector_xw, arch0
+    
+    for(int i = 0 ; i < d.size() ;i++){ 
+                wx[i] =  e[i]*w[i] ;    
+                if(d[i] > 0)
+                        wx[i] += 25.000 ;
+    
     }
     
 }
@@ -148,14 +200,16 @@ void Analyzer::initializeResults(std::vector<double>& p,  std::vector<double>& e
 
 }
 
-void Analyzer::performClean( std::vector<double>& d, std::vector<double>& a,  std::vector<double>& b,std::vector<double>& c, std::vector<double>& p, std::vector<double>& e,std::vector<double>& w, std::vector<double>& wx){
+void Analyzer::performClean( std::vector<double>& z, std::vector<double>& a,  std::vector<double>& b,std::vector<double>& c, std::vector<double>& d, std::vector<double>& e, std::vector<double>& p, std::vector<double>& ee,std::vector<double>& w, std::vector<double>& wx){
    
     a.clear();
     b.clear();
     c.clear();
     d.clear();
-    p.clear();
     e.clear();
+    z.clear();
+    p.clear();
+    ee.clear();
     w.clear();
     wx.clear();
     

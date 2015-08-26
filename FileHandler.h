@@ -18,6 +18,8 @@ int askDebug();
 int getPubNumber();
 std::string makeName(int textosPrevios);
 int askMode();
+bool askEnable();
+
     //Class variables
 public:
     int debugMode;

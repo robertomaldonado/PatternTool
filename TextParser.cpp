@@ -369,8 +369,131 @@ void TextParser::generateNumericalCharacters(){
 
     for (int i = 0; i < numericalChars.size() ; i++){    
         
-        numericalCharsCountDec.push_back(0);  
+        numericalCharsCountDec.push_back(0);
    }
+}
+
+void TextParser::generateMayusCharacters(){
+    
+    mayusChars.push_back("A");
+    mayusChars.push_back("B");
+    mayusChars.push_back("C");
+    mayusChars.push_back("D");
+    mayusChars.push_back("E");
+    mayusChars.push_back("F");
+    mayusChars.push_back("G");
+    mayusChars.push_back("H");
+    mayusChars.push_back("I");
+    mayusChars.push_back("J");
+    mayusChars.push_back("K");
+    mayusChars.push_back("L");
+    mayusChars.push_back("M");
+    mayusChars.push_back("N");
+    mayusChars.push_back("O");
+    mayusChars.push_back("P");
+    mayusChars.push_back("Q");
+    mayusChars.push_back("R");
+    mayusChars.push_back("S");
+    mayusChars.push_back("T");
+    mayusChars.push_back("U");
+    mayusChars.push_back("V");
+    mayusChars.push_back("W");
+    mayusChars.push_back("X");
+    mayusChars.push_back("Y");
+    mayusChars.push_back("Z");
+
+    for (int i = 0; i < mayusChars.size() ; i++){    
+        
+        mayusCountDec.push_back(0); 
+        mayusCountDec2.push_back(0); 
+   }
+}
+
+void TextParser::generateMinusCharacters(){
+    
+    minusChars.push_back("a");
+    minusChars.push_back("b");
+    minusChars.push_back("c");
+    minusChars.push_back("d");
+    minusChars.push_back("e");
+    minusChars.push_back("f");
+    minusChars.push_back("g");
+    minusChars.push_back("h");
+    minusChars.push_back("i");
+    minusChars.push_back("j");
+    minusChars.push_back("k");
+    minusChars.push_back("l");
+    minusChars.push_back("m");
+    minusChars.push_back("n");
+    minusChars.push_back("o");
+    minusChars.push_back("p");
+    minusChars.push_back("q");
+    minusChars.push_back("r");
+    minusChars.push_back("s");
+    minusChars.push_back("t");
+    minusChars.push_back("u");
+    minusChars.push_back("v");
+    minusChars.push_back("w");
+    minusChars.push_back("x");
+    minusChars.push_back("y");
+    minusChars.push_back("z");
+
+    for (int i = 0; i < minusChars.size() ; i++){    
+        
+        minusCountDec.push_back(0);  
+        minusCountDec2.push_back(0); 
+   }
+
+}
+
+void TextParser::generateFarewell(){
+    
+    farewellExpression.push_back("Suerte");
+    farewellExpression.push_back("Atentamente");
+    farewellExpression.push_back("Cordialmente");
+    farewellExpression.push_back("Gracias");
+
+    for (int i = 0; i < farewellExpression.size() ; i++){    
+         
+        farewellCountDec.push_back(0); 
+   }
+}
+
+void TextParser::generateGreetings(){
+    
+    greetingExpression.push_back("Hola");
+    greetingExpression.push_back("Buen Día");
+    greetingExpression.push_back("Estimado");
+    greetingExpression.push_back("Estimada");
+    greetingExpression.push_back("Buenos");
+    greetingExpression.push_back("Buenas");
+    greetingExpression.push_back("Gracias");
+    greetingExpression.push_back("Atentamente");
+    greetingExpression.push_back("Cordialmente");
+    greetingExpression.push_back("Suerte");
+    greetingExpression.push_back("Saludos");
+    
+    for (int i = 0; i < greetingExpression.size() ; i++){    
+         
+        greetingCountDec.push_back(0); 
+   }
+}
+
+
+void TextParser::compareGreetings(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
+
+    for (int i = 0; i < toCompare.size() ; i++)
+    {
+        
+        for(int j=0; j < greetingExpression.size() ; j++){
+                std::size_t found = toCompare[i].find(greetingExpression[j]);
+                if (found!=std::string::npos)
+                {
+                greetingCountDec[j] =  greetingCountDec[j]+1;
+               // found = 0;
+                }        
+      }
+    } 
 }
 
 void TextParser::compareChars(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
@@ -394,7 +517,7 @@ void TextParser::compareMultipleChars(std::vector<std::string>& toCompare){
     for(int i = 0 ; i < acuteCharsCount.size() ; i++){
         multipleCharsCount[0] += acuteCharsCount[i];
     }
-       multipleCharsCount[1] = 9 ; //Correguir
+      // multipleCharsCount[1] = 9 ; //Correguir
         
     for (int i = 0; i < toCompare.size() ; i++){
         for (int k=0; k < multipleChars.size() ; k++){
@@ -402,12 +525,9 @@ void TextParser::compareMultipleChars(std::vector<std::string>& toCompare){
                 if (pos!=std::string::npos)
                 {
                 multipleCharsCount[k] =  multipleCharsCount[k]+1;
-                //pos = 0;
-                //break;
                 }
         }
     }
-       // cout << "PARRAFOS: " << getParagraphs() <<endl;
  
 }
 void TextParser::compareKumarExpressions(std::vector<std::string>& toCompare){
@@ -415,7 +535,7 @@ void TextParser::compareKumarExpressions(std::vector<std::string>& toCompare){
     for(int i = 0 ; i < acuteCharsCount.size() ; i++){
         multipleCharsCount[0] += acuteCharsCount[i];
     }
-        multipleCharsCount[1] = 9 ; //Correguir
+       // multipleCharsCount[1] = 9 ; //Correguir
         
     for (int i = 0; i < toCompare.size() ; i++){
         
@@ -519,8 +639,7 @@ double TextParser::getSpaceBeforeComma(std::vector<std::string>& v ){
     
     double cBs = 0;
     for(int i = 0 ; i < v.size(); i++){
-       // cout<< "CUIDADO: " << v[i].compare(",") << endl; 
-        if(v[i].compare(",") == 0){
+        if(v[i].compare(" ,") == 0){
           cBs +=1; 
         }
         
@@ -531,18 +650,36 @@ double TextParser::getSpaceBeforeComma(std::vector<std::string>& v ){
 double TextParser::getSpaceAfterComma(std::vector<std::string>& v ){
     
     double sAc = 0;
-//    for(int i = 0 ; i < v.size(); i++){
-//        if(v[i].compare(",") == 0){
-//          cBs +=1; 
-//        }
-//        
-//    }
+        for(int i = 0 ; i < v.size(); i++){
+        if(v[i].compare(", ") == 0){
+          sAc +=1; 
+        }
+    }
     return sAc;
     
 }
 double TextParser::getSpaceBeforeCommaAvg(){
-    double cBs = getSpaceBeforeComma(wordsVector) / (double) wordsVector.size() ;
-    return cBs;
+    
+    return getSpaceBeforeComma(wordsVector) / (double) wordsVector.size() ;
+    
+}
+
+double TextParser::getWS(std::string text){ 
+    int number_of_ws = 0;
+     for(unsigned int i=0; i < text.length(); i++){
+           if ( text[i]==' ')
+                        number_of_ws++;
+         }
+    return number_of_ws;
+}
+double TextParser::getBeginnigUCase(){
+    double uc =  0; 
+    return uc;
+}
+
+double TextParser::getBeginnigLCase(){
+    double lc =  0; 
+    return lc;
 }
 
 void TextParser::getAverages(){
@@ -556,28 +693,28 @@ void TextParser::getAverages(){
     averageVectorCountDec.push_back( getSemicolonPerPar()  );
     averageVectorCountDec.push_back( getQosPerPar() );
     averageVectorCountDec.push_back( getMultipleQosPerPar() );
-    averageVectorCountDec.push_back( 0 );//51 whitespace per sentence
+    averageVectorCountDec.push_back( getWS(wholeText)/(double)wordsVector.size() );
     averageVectorCountDec.push_back( kumarExpressionsCount[0]/(double)wordsVector.size() );    
     averageVectorCountDec.push_back( kumarExpressionsCount[1]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( kumarExpressionsCount[2]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( commonCharsCount[0]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( commonCharsCount[2]/(double)wordsVector.size() );
-    averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() ); //Falta mejorar
+    averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() ); 
     
 }
 void TextParser::getTotals(){
     
-        totalsVectorCountDec.push_back( 0 ); //Sentences begin w/ UpperC
-        totalsVectorCountDec.push_back(0); //Sentences begin w/ LowerC
+        totalsVectorCountDec.push_back( getBeginnigUCase() ); //Sentences begin w/ UpperC
+        totalsVectorCountDec.push_back( getBeginnigLCase() ); //Sentences begin w/ LowerC
         totalsVectorCountDec.push_back( getNumberWords() );
         totalsVectorCountDec.push_back( getSentencesMessage() );
         totalsVectorCountDec.push_back( getParagraphs(wholeText) );
         totalsVectorCountDec.push_back( countTildes(acuteCharsCount) );
         totalsVectorCountDec.push_back( wordsVector.size() );
-        totalsVectorCountDec.push_back( multipleCharsCount[2]);
-        totalsVectorCountDec.push_back( multipleCharsCount[3]);
-        totalsVectorCountDec.push_back(multipleCharsCount[4]);
-        totalsVectorCountDec.push_back(0); //Number of whitespaces
+        totalsVectorCountDec.push_back( multipleCharsCount[2] );
+        totalsVectorCountDec.push_back( multipleCharsCount[3] );
+        totalsVectorCountDec.push_back( multipleCharsCount[4] );
+        totalsVectorCountDec.push_back( getWS(wholeText) ); 
         totalsVectorCountDec.push_back( (double)kumarExpressionsCount[0] );
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[1]);
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[2]);
@@ -631,7 +768,7 @@ void TextParser::compareNumericalChars(std::vector<std::string>& toCompare){ //M
     }
     
     total = zero + one + two + three + four + five + six + seven + eight + nine;
-    //cout << "Total de numericos son: " << total <<endl;
+   // cout << "Total de numericos son: " << total <<endl;
     
     numericalCharsCountDec[0]= zero;
     numericalCharsCountDec[1]= one;
@@ -644,7 +781,183 @@ void TextParser::compareNumericalChars(std::vector<std::string>& toCompare){ //M
     numericalCharsCountDec[8]= eight;
     numericalCharsCountDec[9]= nine;
     
+    //numericalCharsCountDec.push_back(total);
 }
+
+void TextParser::compareMayusCharsImproved(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
+
+    int a = 0, b = 0, c = 0 , d= 0, e= 0, f= 0, g= 0, h= 0, i= 0, j= 0, k=0 , l=0, m=0 ;
+    int n = 0, o = 0, p = 0 , q= 0, r= 0,  s=0, t= 0, u= 0, v= 0, w= 0, x=0 , y=0, z=0 ;
+    int total = 0;
+    
+    for (int op = 0; op < toCompare.size() ; op++){
+                
+         a += count(toCompare[i].begin(), toCompare[i].end(), 'A');
+         b += count(toCompare[i].begin(), toCompare[i].end(), 'B');
+         c += count(toCompare[i].begin(), toCompare[i].end(), 'C');
+         d += count(toCompare[i].begin(), toCompare[i].end(), 'D');
+         e += count(toCompare[i].begin(), toCompare[i].end(), 'E');
+         f += count(toCompare[i].begin(), toCompare[i].end(), 'F');
+         g += count(toCompare[i].begin(), toCompare[i].end(), 'G');
+         h += count(toCompare[i].begin(), toCompare[i].end(),'H');
+         i += count(toCompare[i].begin(), toCompare[i].end(), 'I');
+         j += count(toCompare[i].begin(), toCompare[i].end(), 'J');
+         k += count(toCompare[i].begin(), toCompare[i].end(), 'K');
+         l += count(toCompare[i].begin(), toCompare[i].end(), 'L');
+         m += count(toCompare[i].begin(), toCompare[i].end(), 'M');
+         n += count(toCompare[i].begin(), toCompare[i].end(), 'N');
+         o += count(toCompare[i].begin(), toCompare[i].end(), 'O');
+         p += count(toCompare[i].begin(), toCompare[i].end(), 'P');
+         q += count(toCompare[i].begin(), toCompare[i].end(), 'Q');
+         r += count(toCompare[i].begin(), toCompare[i].end(), 'R');
+         s += count(toCompare[i].begin(), toCompare[i].end(),'S');
+         t += count(toCompare[i].begin(), toCompare[i].end(), 'T');
+         u += count(toCompare[i].begin(), toCompare[i].end(), 'U');
+         v += count(toCompare[i].begin(), toCompare[i].end(), 'V');
+         w += count(toCompare[i].begin(), toCompare[i].end(), 'W');
+         x += count(toCompare[i].begin(), toCompare[i].end(), 'X');
+         y += count(toCompare[i].begin(), toCompare[i].end(), 'Y');
+         z += count(toCompare[i].begin(), toCompare[i].end(), 'Z');
+         //break;
+         // << "Contando carateres mayus.." << a <<endl;
+
+    }
+    
+    for (int i = 0; i < toCompare.size() ; i++)
+    {
+        
+        for(int j=0; j < mayusChars.size() ; j++){
+                std::size_t found = toCompare[i].find(mayusChars[j]);
+                if (found!=std::string::npos)
+                {
+                mayusCountDec2[j] =  mayusCountDec2[j]+1;
+                found = 0;
+                }        
+      }
+    } 
+    
+//    int nuevoTotal = 0;
+//    for(int p =0; p < mayusChars.size(); p++){
+//        nuevoTotal += mayusCountDec2[p]  ;
+//    }
+//   
+    total = a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z;
+   
+    //cout << "Total de mayusculas son: " << total <<endl;
+    //cout << "Total de mejorado de mayusculas son: " << nuevoTotal <<endl;
+//    --nuevoTotal = 0 ;
+    
+    mayusCountDec[0]= a;
+    mayusCountDec[1]= b;
+    mayusCountDec[2]= c;
+    mayusCountDec[3]= d;
+    mayusCountDec[4]= e;
+    mayusCountDec[5]= f;
+    mayusCountDec[6]= g;
+    mayusCountDec[7]= h;
+    mayusCountDec[8]= i;
+    mayusCountDec[9]= j;
+    mayusCountDec[10]= k;
+    mayusCountDec[11]= l;
+    mayusCountDec[12]= m;
+    mayusCountDec[13]= n;
+    mayusCountDec[14]= o;
+    mayusCountDec[15]= p;
+    mayusCountDec[16]= q;
+    mayusCountDec[17]= r;
+    mayusCountDec[18]= s;
+    mayusCountDec[19]= t;
+    mayusCountDec[20]= u;
+    mayusCountDec[21]= v;
+    mayusCountDec[22]= w;
+    mayusCountDec[23]= x;
+    mayusCountDec[24]= y;
+    mayusCountDec[25]= z;
+    
+}
+
+void TextParser::compareMinusCharsImproved(std::vector<std::string>& toCompare){ //Metodo mejorado de compareCharactersToFile
+
+    int a = 0, b = 0, c = 0 , d= 0, e= 0, f= 0, g= 0, h= 0, i= 0, j= 0, k=0 , l=0, m=0 ;
+    int n = 0, o = 0, p = 0 , q= 0, r= 0,  s=0, t= 0, u= 0, v= 0, w= 0, x=0 , y=0, z=0 ;
+    int total = 0;
+    
+    for (int op = 0; op < toCompare.size() ; op++){
+                
+         a += count(toCompare[i].begin(), toCompare[i].end(), 'a');
+         b += count(toCompare[i].begin(), toCompare[i].end(), 'b');
+         c += count(toCompare[i].begin(), toCompare[i].end(), 'c');
+         d += count(toCompare[i].begin(), toCompare[i].end(), 'd');
+         e += count(toCompare[i].begin(), toCompare[i].end(), 'e');
+         f += count(toCompare[i].begin(), toCompare[i].end(), 'f');
+         g += count(toCompare[i].begin(), toCompare[i].end(), 'g');
+         h += count(toCompare[i].begin(), toCompare[i].end(),'h');
+         i += count(toCompare[i].begin(), toCompare[i].end(), 'i');
+         j += count(toCompare[i].begin(), toCompare[i].end(), 'j');
+         k += count(toCompare[i].begin(), toCompare[i].end(), 'k');
+         l += count(toCompare[i].begin(), toCompare[i].end(), 'l');
+         m += count(toCompare[i].begin(), toCompare[i].end(), 'm');
+         n += count(toCompare[i].begin(), toCompare[i].end(), 'n');
+         o += count(toCompare[i].begin(), toCompare[i].end(), 'o');
+         p += count(toCompare[i].begin(), toCompare[i].end(), 'p');
+         q += count(toCompare[i].begin(), toCompare[i].end(), 'q');
+         r += count(toCompare[i].begin(), toCompare[i].end(), 'r');
+         s += count(toCompare[i].begin(), toCompare[i].end(),'s');
+         t += count(toCompare[i].begin(), toCompare[i].end(), 't');
+         u += count(toCompare[i].begin(), toCompare[i].end(), 'u');
+         v += count(toCompare[i].begin(), toCompare[i].end(), 'v');
+         w += count(toCompare[i].begin(), toCompare[i].end(), 'w');
+         x += count(toCompare[i].begin(), toCompare[i].end(), 'x');
+         y += count(toCompare[i].begin(), toCompare[i].end(), 'y');
+         z += count(toCompare[i].begin(), toCompare[i].end(), 'z');
+         //break;
+         // << "Contando carateres mayus.." << a <<endl;
+
+    }
+   
+    
+    for (int i = 0; i < toCompare.size() ; i++)
+    {
+        
+        for(int j=0; j < minusChars.size() ; j++){
+                std::size_t found = toCompare[i].find(minusChars[j]);
+                if (found!=std::string::npos)
+                {
+                minusCountDec2[j] =  minusCountDec2[j]+1;
+                found = 0;
+                }        
+      }
+    } 
+    
+    minusCountDec[0]= a;
+    minusCountDec[1]= b;
+    minusCountDec[2]= c;
+    minusCountDec[3]= d;
+    minusCountDec[4]= e;
+    minusCountDec[5]= f;
+    minusCountDec[6]= g;
+    minusCountDec[7]= h;
+    minusCountDec[8]= i;
+    minusCountDec[9]= j;
+    minusCountDec[10]= k;
+    minusCountDec[11]= l;
+    minusCountDec[12]= m;
+    minusCountDec[13]= n;
+    minusCountDec[14]= o;
+    minusCountDec[15]= p;
+    minusCountDec[16]= q;
+    minusCountDec[17]= r;
+    minusCountDec[18]= s;
+    minusCountDec[19]= t;
+    minusCountDec[20]= u;
+    minusCountDec[21]= v;
+    minusCountDec[22]= w;
+    minusCountDec[23]= x;
+    minusCountDec[24]= y;
+    minusCountDec[25]= z;
+    
+}
+
 void TextParser::generateNumericalOutputChars(){
     
     outputNumericalChars.push_back("ZERO");
@@ -657,6 +970,22 @@ void TextParser::generateNumericalOutputChars(){
     outputNumericalChars.push_back("SEVEN");
     outputNumericalChars.push_back("EIGHT");
     outputNumericalChars.push_back("NINE");
+    
+}
+
+void TextParser::generateOutputGreetings(){
+    
+    outputGreeting.push_back("G1");
+    outputGreeting.push_back("G2");
+    outputGreeting.push_back("G3");
+    outputGreeting.push_back("G4");
+    outputGreeting.push_back("G5");
+    outputGreeting.push_back("G6");
+    outputGreeting.push_back("F1");
+    outputGreeting.push_back("F2");
+    outputGreeting.push_back("F3");
+    outputGreeting.push_back("F4");
+    outputGreeting.push_back("F5");
     
 }
 
@@ -785,6 +1114,68 @@ void TextParser::generateOutputTotalsVector(){
 
 }
 
+void TextParser::generateOutputMayusChars(){
+    
+        outputMayus.push_back("A");
+        outputMayus.push_back("B");
+        outputMayus.push_back("C");
+        outputMayus.push_back("D");
+        outputMayus.push_back("E");
+        outputMayus.push_back("F");
+        outputMayus.push_back("G");
+        outputMayus.push_back("H");
+        outputMayus.push_back("I");
+        outputMayus.push_back("J");
+        outputMayus.push_back("K");
+        outputMayus.push_back("L");
+        outputMayus.push_back("M");
+        outputMayus.push_back("N");
+        outputMayus.push_back("O");
+        outputMayus.push_back("P");
+        outputMayus.push_back("Q");
+        outputMayus.push_back("R");
+        outputMayus.push_back("S");
+        outputMayus.push_back("T");
+        outputMayus.push_back("U");
+        outputMayus.push_back("V");
+        outputMayus.push_back("W");
+        outputMayus.push_back("X");
+        outputMayus.push_back("Y");
+        outputMayus.push_back("Z");
+
+}
+
+void TextParser::generateOutputMinusChars(){
+    
+        outputMinus.push_back("a");
+        outputMinus.push_back("b");
+        outputMinus.push_back("c");
+        outputMinus.push_back("d");
+        outputMinus.push_back("e");
+        outputMinus.push_back("f");
+        outputMinus.push_back("g");
+        outputMinus.push_back("h");
+        outputMinus.push_back("i");
+        outputMinus.push_back("j");
+        outputMinus.push_back("k");
+        outputMinus.push_back("l");
+        outputMinus.push_back("m");
+        outputMinus.push_back("n");
+        outputMinus.push_back("o");
+        outputMinus.push_back("p");
+        outputMinus.push_back("q");
+        outputMinus.push_back("r");
+        outputMinus.push_back("s");
+        outputMinus.push_back("t");
+        outputMinus.push_back("u");
+        outputMinus.push_back("v");
+        outputMinus.push_back("w");
+        outputMinus.push_back("x");
+        outputMinus.push_back("y");
+        outputMinus.push_back("z");
+
+}
+
 void TextParser::refineResults(){
   
      for (int i = 0; i < acuteCharsCount.size() ; i++)
@@ -812,60 +1203,35 @@ void TextParser::refineResults(){
      {
          numericalCharsCountDec[n] = (numericalCharsCountDec[n]/(double)wordsVector.size())*100;
      }
+     
+     for (int o = 0; o < mayusCountDec.size() ; o++)
+     {
+         mayusCountDec[o] = (mayusCountDec[o]/(double)wordsVector.size())*100;
+     }
+     
+     for (int o = 0; o < mayusCountDec2.size() ; o++)
+     {
+         mayusCountDec2[o] = (mayusCountDec2[o]/(double)wordsVector.size())*100;
+     }
+     
+      for (int p = 0; p < minusCountDec.size() ; p++)
+     {
+         minusCountDec[p] = (minusCountDec[p]/(double)wordsVector.size())*100;
+     }
+     
+     for (int p = 0; p < minusCountDec.size() ; p++)
+     {
+         minusCountDec2[p] = (minusCountDec2[p]/(double)wordsVector.size())*100;
+     }
+     
+//     for (int p = 0; p < greetingCountDec.size() ; p++)
+//     {
+//         greetingCountDec[p] = (greetingCountDec[p]/(double)wordsVector.size())*100;
+//     }
+//     
     
 }
 
-void TextParser::writeFilePlot(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name){
-    //Manjeador de archivo
-    ofstream myfile;
-    
-    //Nombre del archivo de salida generado
-    string outputName = name; //cambiar a default
-    outputName.append("plot.txt");
-    
-    //Abrir el archivo
-    myfile.open(outputName);
-    
-    //Escribir en el archivo
-    myfile << "##### CATEGORIA SIMBOLOS GLOBALES ####" << endl;
-    
-    myfile << "PPD: Punctuation Period\nPCN: Punctuation Colon\nPCA: Punctuation Comma\nPSC: Punctuation Semicolon\nEEO: Expression Exclamation Open\nEEC: Expression Exclamation Close\nEQO: Expression Question Open\nEQC: Expression Question Close\nMPS: Mathematical Plus\nMMS: Mathematical Minus\nMTS: Mathematical Times\nMMO: Mathematical Modulus\nMEQ: Mathematical Equals\nMGR: Mathematical Greater\nMLR: Mathematical Lesser\nMDN: Mathematical Division\nGPO: Grouping Parenthesis Open\nGPC: Grouping Parenthesis Close\nGCO: Grouping Curly Bracket Open\nGCC: Grouping XCurly Bracket Close\nGBO: Grouping Bracket Open\nGBC: Grouping Bracket Close\nOBS: Other Back Slash\nOAA: Other Arroba\nONS: Other Number Symbol\nODS: Other Dollar Sign\nOHO: Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
-    
-    myfile << "FILE " << name <<" ";
-    for (int i = 0; i < v1.size(); i++) //Iterara sobre todas las palabras
-    {
-        myfile << v1[i] << " " << v2[i]<< " ";
-    }//end for
-    
-    //Cerrar el archivo saliente
-    myfile.close();   
-}
-
-void TextParser::writeFilePlotTildes(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name){
-    //Manjeador de archivo
-    ofstream myfile;
-    
-    //Nombre del archivo de salida generado
-    string outputName = name; //cambiar a default
-    outputName.append("plot_tildes.txt");
-    
-    //Abrir el archivo
-    myfile.open(outputName);
-    
-    //Escribir en el archivo
-    myfile << "##### CATEGORIA ACENTOS GLOBALES ####" << endl;
-    
-    //myfile << " Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
-    
-    myfile << "FILE " << name <<" ";
-    for (int i = 0; i < v1.size(); i++) //Iterara sobre todas las palabras
-    {
-        myfile << v1[i] << " " << v2[i]<< " ";
-    }//end for
-    
-    //Cerrar el archivo saliente
-    myfile.close();   
-}
 
 void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name, std::string ext){
     //Manjeador de archivo
@@ -881,36 +1247,14 @@ void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<doubl
     //Escribir en el archivo
     myfile << "##### CATEGORIA SIMBOLOS GLOBALES ####" << endl;
     
-    myfile << "PPD: Punctuation Period\nPCN: Punctuation Colon\nPCA: Punctuation Comma\nPSC: Punctuation Semicolon\nEEO: Expression Exclamation Open\nEEC: Expression Exclamation Close\nEQO: Expression Question Open\nEQC: Expression Question Close\nMPS: Mathematical Plus\nMMS: Mathematical Minus\nMTS: Mathematical Times\nMMO: Mathematical Modulus\nMEQ: Mathematical Equals\nMGR: Mathematical Greater\nMLR: Mathematical Lesser\nMDN: Mathematical Division\nGPO: Grouping Parenthesis Open\nGPC: Grouping Parenthesis Close\nGCO: Grouping Curly Bracket Open\nGCC: Grouping XCurly Bracket Close\nGBO: Grouping Bracket Open\nGBC: Grouping Bracket Close\nOBS: Other Back Slash\nOAA: Other Arroba\nONS: Other Number Symbol\nODS: Other Dollar Sign\nOHO: Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
+    myfile << "PPD: Punctuation Period\nPCN: Punctuation Colon\nPCA: Punctuation Comma\nPSC: Punctuation Semicolon\n"
+            "  EEO: Expression Exclamation Open\nEEC: Expression Exclamation Close\nEQO: Expression Question Open\nEQC: Expression Question Close\n"
+            "  MPS: Mathematical Plus\nMMS: Mathematical Minus\nMTS: Mathematical Times\nMMO: Mathematical Modulus\nMEQ: Mathematical Equals\nMGR: Mathematical Greater\nMLR: Mathematical Lesser\nMDN: Mathematical Division\n"
+            "  GPO: Grouping Parenthesis Open\nGPC: Grouping Parenthesis Close\nGCO: Grouping Curly Bracket Open\nGCC: Grouping XCurly Bracket Close\nGBO: Grouping Bracket Open\nGBC: Grouping Bracket Close\n"
+            "  OBS: Other Back Slash\nOAA: Other Arroba\nONS: Other Number Symbol\nODS: Other Dollar Sign\nOHO: Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
     
     myfile << "FILE " << name <<" ";
     for (int i = 0; i < v2.size(); i++) //Iterara sobre todas las palabras
-    {
-        myfile << v1[i] << " " << v2[i]<< " ";
-    }//end for
-    
-    //Cerrar el archivo saliente
-    myfile.close();   
-}
-
-void TextParser::writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name, std::string ext){
-    //Manjeador de archivo
-    ofstream myfile;
-    
-    //Nombre del archivo de salida generado
-    string outputName = name; //cambiar a default
-    outputName.append(ext);
-    
-    //Abrir el archivo
-    myfile.open(outputName);
-    
-    //Escribir en el archivo
-    myfile << "##### CATEGORIA ACENTOS GLOBALES ####" << endl;
-    
-    //myfile << " Other Carret\nONP: Other Ampersand\nOVD: Other Pipe\n\n" << endl;
-    
-    myfile << "FILE " << name <<" ";
-    for (int i = 0; i < v1.size(); i++) //Iterara sobre todas las palabras
     {
         myfile << v1[i] << " " << v2[i]<< " ";
     }//end for
@@ -951,7 +1295,6 @@ void TextParser::resetVariables(){
     kumarExpressionsCountDec.clear();
     
     totalsVectorCountDec.clear();
-    //totalsVector.clear();
     
     mainVector.clear();
     
@@ -962,6 +1305,21 @@ void TextParser::resetVariables(){
     numericalChars.clear();
     outputNumericalChars.clear();
     
+    outputMayus.clear();
+    mayusCountDec.clear();
+    mayusChars.clear();
+    mayusCountDec2.clear();
+    
+    outputMinus.clear();
+    minusCountDec.clear();
+    minusChars.clear();
+    minusCountDec2.clear();
+    
+    greetingExpression.clear();
+    outputGreeting.clear();
+    greetingCountDec.clear();
+    
+    farewellExpression.clear();
 }
 
 void TextParser::mergeVectors(std::vector<double>& v0, std::vector<double>& v1, std::vector<double>& v2 , std::vector<double>& v3){

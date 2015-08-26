@@ -31,11 +31,16 @@ public:
     
     //void generateUniquesCount();
     //void generateSpecialCharacters();
+    void generateFarewell();
+    void generateGreetings();
+    void generateMayusCharacters();
+    void generateMinusCharacters();
     void generateNumericalCharacters();
     void generateCharacters(); //Genera caracteres de puntuacion 
     void generateAcuteChars(); //Caracteres tildados
     void generateMultipleChars(); //Caracteres multiples
     void generateKumarExpressions(); //Caracteres tildados
+    
     
     int getParagraphs(std::string text);
     int getNumberWords();
@@ -54,16 +59,21 @@ public:
     double getSpaceBeforeComma(std::vector<std::string>& v );
     double getSpaceAfterComma(std::vector<std::string>& v );
     void getAverages();
-    
+    double getWS(std::string text);
+    double getBeginnigUCase();
+    double getBeginnigLCase();
     
     void getTotals();
-    
-    //void compareCharactersToFile();
+
+    void compareMayusCharsImproved(std::vector<std::string>& toCompare);
+    void compareMinusCharsImproved(std::vector<std::string>& toCompare);
+     
     void compareNumericalChars(std::vector<std::string>& toCompare);
     void compareChars(std::vector<std::string>& toCompare); //Compara los caracteres comunes 
     void compareAcuteChars(std::vector<std::string>& toCompare); //Compara los caracteres acentuados
     void compareMultipleChars(std::vector<std::string>& toCompare);
     void compareKumarExpressions(std::vector<std::string>& toCompare);
+    void compareGreetings(std::vector<std::string>& toCompare);
     
     void addKumarAvg();
     
@@ -72,22 +82,17 @@ public:
     void generateAcuteOutputChars(); //Almacena nombres representativos para los graficos
     void generateMultipleOutputChars();
     void generateOutputAverageVector();
+    void generateOutputMayusChars();
+    void generateOutputMinusChars();
+    void generateOutputGreetings();
+    
     
     //void generateTotalsVector();
     void generateOutputTotalsVector();
     
     void refineResults();
-   
-    void writeFilePlot(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name); //Escribe al file para lectura
-    void writeFilePlotTildes(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
-    //int inspectChars(std::vector<std::string>& p);
     
     void writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name,  std::string ext); //Escribe al file para lectura
-    void writeFilePlotTildes2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name,  std::string ext);
-    
-    //void writeFile(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
-    //void writeFile2(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
-    //void writeFilePlot(std::vector<std::string>& v1 , std::vector<int> & v2, std::string name);
     void mergeVectors(std::vector<double>& v0, std::vector<double>& v1, std::vector<double>& v2 , std::vector<double>& v3);
     void resetVariables();  //Utilizado para reiniciar variables, en manejo de archivos múlitples
 
@@ -107,23 +112,37 @@ public:
     
     std::vector<std::string> averagesVector; 
     
+    std::vector<std::string> farewellExpression;
+    std::vector<std::string> greetingExpression;
+    std::vector<std::string> mayusChars;
+    std::vector<std::string> minusChars;
     std::vector<std::string> numericalChars;
     std::vector<std::string> acuteChars; //Caracteres acentuados
     std::vector<std::string> commonChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> multipleChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> kumarExpressions;
     
+    std::vector<std::string> outputGreeting;
+    std::vector<std::string> outputMayus;
+    std::vector<std::string> outputMinus;
     std::vector<std::string> outputNumericalChars; 
     std::vector<std::string> outputCommonChars; //Cualquier otro caracter. Puntuacion o matematico.
     std::vector<std::string> outputAcuteChars;
     std::vector<std::string> outputAverageVector;
     std::vector<std::string> outputTotalsVector;
     
+    
     std::vector<int> commonCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> acuteCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> multipleCharsCount; //Cuenta de todos los caracteres asi sean 0.
     std::vector<int> kumarExpressionsCount;
   //  averageVectorCount
+    std::vector<double>  farewellCountDec;
+    std::vector<double>  greetingCountDec;
+    std::vector<double>  mayusCountDec;
+    std::vector<double> mayusCountDec2;
+    std::vector<double>  minusCountDec;
+    std::vector<double>  minusCountDec2;
     std::vector<double>  numericalCharsCountDec;
     std::vector<double> commonCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
     std::vector<double> acuteCharsCountDec; //Cuenta de todos los caracteres asi sean 0.
@@ -132,6 +151,7 @@ public:
     std::vector<double> averageVectorCountDec;
     std::vector<double> totalsVectorCountDec;
     std::vector<double> mainVector;
+    
 };
 #endif	/* TEXTPARSER_H */
 

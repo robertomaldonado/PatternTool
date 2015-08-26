@@ -32,7 +32,10 @@ void FileHandler::welcomeUser(){
     cout << "##                                                 ## " << endl;
     cout << "##            BIENVENIDO AL PROGRAMA               ## " << endl;
     cout << "##                                                 ## " << endl;
-    cout << "##                PATTERN RECOGNITION              ## " << endl;
+    cout << "##              PATTERN RECOGNITION                ## " << endl;
+    cout << "##                     TOOL                        ## " << endl;
+    cout << "##                                                 ## " << endl;
+    cout << "##            TUTOR: MAURICIO ITURRALDE            ## " << endl;
     cout << "##                                                 ## " << endl;
     cout << "##            AUTOR: ROBERTO MALDONADO             ## " << endl;
     cout << "##                                                 ## " << endl;
@@ -60,3 +63,16 @@ int FileHandler::askMode(){
     
 }
 
+bool FileHandler::askEnable(){
+
+    int choice = 0;
+    
+    cout << "Enable?. (0)off (1)on: ";
+    cin >> choice;
+     
+    if(choice == 1)
+        return true;
+    else
+        return false;
+    
+}
