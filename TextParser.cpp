@@ -15,11 +15,8 @@
 #include <fstream>
 #include <vector>
 #include "TextParser.h"
-#include <algorithm>  //Permite compilacion desde ubuntu
+#include <algorithm>  //Libreria requerida por linux
 #include <clocale>
-
-//#include <wchar>
-//#pragma execution_character_set("utf-8")
 
 using namespace std;
 
@@ -62,96 +59,6 @@ void TextParser::LoadWordVector(string fileName) //trabajando en esto
 
 }
 
-void TextParser::ReadWordsAndChars(string fileName) //trabajando en esto
-{
-  string word = ""; //String almacenalinea de texto de forma temporal
-  string p1 = "";
-  string p2 = "";
-  char singleCharacter; //Caracter siguiente a ser analizado
-    
-  ifstream inputFile (fileName);
-    
-    //inputFile.imbue(utf8_locale);
-
-  if (inputFile.is_open()) {
-      
-    while ( inputFile.get(singleCharacter) ){  //Seguir tomando el siguiente caracter del archivo de texto
-    
-        
-      if( isspace(singleCharacter) ){  //Hay un espacio
-
-          if( !isalpha(word.back()) ){ //Caracter no es alfabetico
-
-            //while(!isalpha(word.back()) && word.length() > 2){
-
-              breakUpWords(word);  //Llama al metodo que agrega la palabra
-              word = "";
-            //}
-
-          }else{// Se debe analizar caso de ENTER y EOF
-
-              wordsAndCharsVector.push_back(word); //insertar palabra
-              word = "";
-
-          }//end else
-
-      }else{ //Caracter es alfabetico
-
-          word += singleCharacter;
-          //////////////////
-          
-          if(inputFile.eof()){
-              cout << endl << "Encontre un fin de archivo" << endl;
-          }
-          
-          /////////////////
-      }//end if-else
-
-    } //end while
-
-    breakUpWords(word);
-
-      if(!true){
-          wordsAndCharsVector.push_back(word);
-      }
-
-    inputFile.close();  //Cerrar archivo
-
-    cout << endl << "Archivo cargado en forma de palabras y caracteres" << endl;
-  } //end if
-  else
-  {
-    cout << "No se puede abrir el archivo " << endl; //error
-  }//end if-else
-
-}
-
-//Romper la palabra y agregarla a un vecotr
-void TextParser::breakUpWords(string word){
-    string p1 = "";
-    string p2 = "";
-    
-    if(word.length() > 2){ //Trabajar cuando hay mas de dos caracteres en la palabra
-        
-        int separator = word.length()-1 ;  //Indice de caracter a sacar
-        
-        p1 = word.substr(0, separator);  //Obtener palabra
-        
-        p2 = word.substr(separator, word.length()); //Obtener el signo de puntuacion
-        
-        if (isalpha(p1.back()))
-            wordsAndCharsVector.push_back(p1); //Agregar p1
-        
-    }//end if
-    
-    if( p1.length() > 2  && !isalpha(p1.back())){ //Significa que hay mas simbolos seguidos
-        breakUpWords(p1); //Lanzar cadena p1, a BreakUpWords nuevamente
-    }
-    
-    wordsAndCharsVector.push_back(p2); //
-}
-
-
  double TextParser::countTildes(std::vector<int> & v){
      double tildes = 0 ; 
      
@@ -159,8 +66,7 @@ void TextParser::breakUpWords(string word){
         {
           tildes = tildes + v[i];
         }
-     return tildes;
-     
+     return tildes; 
  }
 
 void TextParser::countSpaces(std::string fileName){
@@ -168,6 +74,7 @@ void TextParser::countSpaces(std::string fileName){
     
    ifstream inputFile (fileName);
    
+   int whiteSpacesCount = 0;
    string line = ""; 
    
   if (inputFile.is_open()) {
@@ -185,9 +92,7 @@ void TextParser::countSpaces(std::string fileName){
     else
   {
     cout << "No se puede abrir el archivo " << endl; //error
-  }//end if-else
-   
- // cout << "La cuenta de espacios es: " << count << endl; 
+  }//end if-else; 
  }
   
 
@@ -306,6 +211,70 @@ void TextParser::generateCharacters(){
     
 }
 
+void TextParser::generateLowerCases(){
+    
+    //Minus case letter
+    spaceLower.push_back(". a");
+    spaceLower.push_back(". b");
+    spaceLower.push_back(". c");
+    spaceLower.push_back(". d");
+    spaceLower.push_back(". e");
+    spaceLower.push_back(". f");
+    spaceLower.push_back(". g");
+    spaceLower.push_back(". h");
+    spaceLower.push_back(". i");
+    spaceLower.push_back(". j");
+    spaceLower.push_back(". k");
+    spaceLower.push_back(". l");
+    spaceLower.push_back(". m");
+    spaceLower.push_back(". n");
+    spaceLower.push_back(". o");
+    spaceLower.push_back(". p");
+    spaceLower.push_back(". q");
+    spaceLower.push_back(". r");
+    spaceLower.push_back(". s");
+    spaceLower.push_back(". t");
+    spaceLower.push_back(". u");
+    spaceLower.push_back(". v");
+    spaceLower.push_back(". w");
+    spaceLower.push_back(". x");
+    spaceLower.push_back(". y");
+    spaceLower.push_back(". z");
+    
+}
+
+void TextParser::generateUpperCases(){
+    
+    //Minus case letter
+    spaceUpper.push_back(". A");
+    spaceUpper.push_back(". B");
+    spaceUpper.push_back(". C");
+    spaceUpper.push_back(". D");
+    spaceUpper.push_back(". E");
+    spaceUpper.push_back(". F");
+    spaceUpper.push_back(". G");
+    spaceUpper.push_back(". H");
+    spaceUpper.push_back(". I");
+    spaceUpper.push_back(". J");
+    spaceUpper.push_back(". K");
+    spaceUpper.push_back(". L");
+    spaceUpper.push_back(". M");
+    spaceUpper.push_back(". N");
+    spaceUpper.push_back(". O");
+    spaceUpper.push_back(". P");
+    spaceUpper.push_back(". Q");
+    spaceUpper.push_back(". R");
+    spaceUpper.push_back(". S");
+    spaceUpper.push_back(". T");
+    spaceUpper.push_back(". U");
+    spaceUpper.push_back(". V");
+    spaceUpper.push_back(". W");
+    spaceUpper.push_back(". X");
+    spaceUpper.push_back(". Y");
+    spaceUpper.push_back(". Z");
+    
+}
+
 void TextParser::generateAcuteChars(){
     
     //Mayus
@@ -327,6 +296,17 @@ void TextParser::generateAcuteChars(){
         acuteCharsCountDec.push_back(0);
     }
     
+}
+
+void TextParser::generateSyntacticExpr(){
+    
+    syntExpression.push_back("a");
+    syntExpression.push_back("de");
+
+//    for (int i = 0; i < acuteChars.size() ; i++){     
+//        acuteCharsCount.push_back(0);  //Inicializar todo a cero
+//        acuteCharsCountDec.push_back(0);
+//    }
 }
 
 void TextParser::generateMultipleChars(){ 
@@ -444,19 +424,6 @@ void TextParser::generateMinusCharacters(){
         minusCountDec2.push_back(0); 
    }
 
-}
-
-void TextParser::generateFarewell(){
-    
-    farewellExpression.push_back("Suerte");
-    farewellExpression.push_back("Atentamente");
-    farewellExpression.push_back("Cordialmente");
-    farewellExpression.push_back("Gracias");
-
-    for (int i = 0; i < farewellExpression.size() ; i++){    
-         
-        farewellCountDec.push_back(0); 
-   }
 }
 
 void TextParser::generateGreetings(){
@@ -635,50 +602,87 @@ double TextParser::getWsPerSent(){
     double wsPS = wordsVector.size() / (double)getSentencesMessage() ;
     return wsPS;
 }
-double TextParser::getSpaceBeforeComma(std::vector<std::string>& v ){
+double TextParser::getSpaceBeforeComma(std::string wrd){
     
     double cBs = 0;
-    for(int i = 0 ; i < v.size(); i++){
-        if(v[i].compare(" ,") == 0){
-          cBs +=1; 
+    for(int i =0 ; i < wrd.size()-2; i++){
+    
+        string tmp = wrd.substr(i,2);
+        
+        if( tmp.compare(" ,") == 0 ){
+           cBs +=1;  
         }
         
     }
     return cBs;
     
 }
-double TextParser::getSpaceAfterComma(std::vector<std::string>& v ){
+double TextParser::getSpaceAfterComma(std::string wrd){
     
     double sAc = 0;
-        for(int i = 0 ; i < v.size(); i++){
-        if(v[i].compare(", ") == 0){
-          sAc +=1; 
+    
+    for(int i =0 ; i < wrd.size()-2; i++){
+    
+        string tmp = wrd.substr(i,2);
+        
+        if( tmp.compare(", ") == 0 ){
+           sAc +=1;  
         }
+        
     }
     return sAc;
     
 }
 double TextParser::getSpaceBeforeCommaAvg(){
     
-    return getSpaceBeforeComma(wordsVector) / (double) wordsVector.size() ;
+    return getSpaceBeforeComma(wholeText) / (double) wordsVector.size() ;
+    
+}
+
+double TextParser::getSpaceAfterCommaAvg(){
+    
+    return getSpaceAfterComma(wholeText) / (double) wordsVector.size() ;
     
 }
 
 double TextParser::getWS(std::string text){ 
+    
     int number_of_ws = 0;
      for(unsigned int i=0; i < text.length(); i++){
            if ( text[i]==' ')
                         number_of_ws++;
          }
     return number_of_ws;
+    
 }
-double TextParser::getBeginnigUCase(){
+double TextParser::getBeginnigUCase(std::string text){
     double uc =  0; 
+    
+    for(int j =0 ; j < text.size()-3; j++){
+        string tmp = text.substr(j,3);
+        for(int k =0 ; k < spaceUpper.size() ; k++){
+                if( tmp.compare(spaceUpper[k]) == 0 ){
+                   uc +=1;  
+                 }
+        }
+    }
+    
     return uc;
 }
 
-double TextParser::getBeginnigLCase(){
+double TextParser::getBeginnigLCase(std::string text){
     double lc =  0; 
+    
+    for(int j =0 ; j < text.size()-3; j++){
+        string tmp = text.substr(j,3);
+        for(int k =0 ; k < spaceLower.size() ; k++){
+            
+                if( tmp.compare(spaceLower[k]) == 0 ){
+                lc +=1;  
+                 }
+        }
+    }
+    
     return lc;
 }
 
@@ -698,14 +702,14 @@ void TextParser::getAverages(){
     averageVectorCountDec.push_back( kumarExpressionsCount[1]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( kumarExpressionsCount[2]/(double)wordsVector.size() );
     averageVectorCountDec.push_back( commonCharsCount[0]/(double)wordsVector.size() );
-    averageVectorCountDec.push_back( commonCharsCount[2]/(double)wordsVector.size() );
+    averageVectorCountDec.push_back( getSpaceAfterCommaAvg() );
     averageVectorCountDec.push_back( getSpaceBeforeCommaAvg() ); 
     
 }
 void TextParser::getTotals(){
     
-        totalsVectorCountDec.push_back( getBeginnigUCase() ); //Sentences begin w/ UpperC
-        totalsVectorCountDec.push_back( getBeginnigLCase() ); //Sentences begin w/ LowerC
+        totalsVectorCountDec.push_back( getBeginnigUCase(wholeText) ); //Sentences begin w/ UpperC
+        totalsVectorCountDec.push_back( getBeginnigLCase(wholeText) ); //Sentences begin w/ LowerC
         totalsVectorCountDec.push_back( getNumberWords() );
         totalsVectorCountDec.push_back( getSentencesMessage() );
         totalsVectorCountDec.push_back( getParagraphs(wholeText) );
@@ -718,8 +722,8 @@ void TextParser::getTotals(){
         totalsVectorCountDec.push_back( (double)kumarExpressionsCount[0] );
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[1]);
         totalsVectorCountDec.push_back((double)kumarExpressionsCount[2]);
-        totalsVectorCountDec.push_back( getSpaceAfterComma(wordsVector) );
-        totalsVectorCountDec.push_back( getSpaceBeforeComma(wordsVector) );
+        totalsVectorCountDec.push_back( getSpaceAfterComma(wholeText) );
+        totalsVectorCountDec.push_back( getSpaceBeforeComma(wholeText) );
 
 }
 
@@ -835,17 +839,8 @@ void TextParser::compareMayusCharsImproved(std::vector<std::string>& toCompare){
                 }        
       }
     } 
-    
-//    int nuevoTotal = 0;
-//    for(int p =0; p < mayusChars.size(); p++){
-//        nuevoTotal += mayusCountDec2[p]  ;
-//    }
-//   
+      
     total = a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z;
-   
-    //cout << "Total de mayusculas son: " << total <<endl;
-    //cout << "Total de mejorado de mayusculas son: " << nuevoTotal <<endl;
-//    --nuevoTotal = 0 ;
     
     mayusCountDec[0]= a;
     mayusCountDec[1]= b;
@@ -910,8 +905,6 @@ void TextParser::compareMinusCharsImproved(std::vector<std::string>& toCompare){
          x += count(toCompare[i].begin(), toCompare[i].end(), 'x');
          y += count(toCompare[i].begin(), toCompare[i].end(), 'y');
          z += count(toCompare[i].begin(), toCompare[i].end(), 'z');
-         //break;
-         // << "Contando carateres mayus.." << a <<endl;
 
     }
    
@@ -1062,12 +1055,6 @@ void TextParser::generateMultipleOutputChars(){
     outputAcuteChars.push_back("MQM"); // Multiple Question
     outputAcuteChars.push_back("MQM"); // Multiple Exclamation
     outputAcuteChars.push_back("MEL"); // Multiple Dots ...
-//    
-//    outputAcuteChars.push_back("MIA");
-//    outputAcuteChars.push_back("MIE");
-//    outputAcuteChars.push_back("MII");
-//    outputAcuteChars.push_back("MIO");
-//    outputAcuteChars.push_back("MIU");
 
 }
 
@@ -1228,7 +1215,7 @@ void TextParser::refineResults(){
 //     {
 //         greetingCountDec[p] = (greetingCountDec[p]/(double)wordsVector.size())*100;
 //     }
-//     
+     
     
 }
 
@@ -1266,66 +1253,41 @@ void TextParser::writeFilePlot2(std::vector<std::string>& v1 , std::vector<doubl
 void TextParser::resetVariables(){
     
     cout << endl << "Cleared Variables... Ready for next text..." << endl;
-    wordsAndCharsVector.clear();
     wordsVector.clear();
     wholeText = "";
+    
    // uniqueWordsVector.clear();
     //uniqueWordsVectorCount.clear();
     //clonedVector.clear();
-    commonCharsCount.clear();
-    commonCharsCountDec.clear();
-    commonChars.clear();
-    averageVectorCountDec.clear();
     
-    acuteCharsCount.clear();
-    acuteCharsCountDec.clear();
-    acuteChars.clear();
+    commonCharsCount.clear();commonCharsCountDec.clear();commonChars.clear();averageVectorCountDec.clear();
     
-    multipleCharsCount.clear();
-    multipleChars.clear();
-    multipleCharsCountDec.clear();
+    acuteCharsCount.clear();acuteCharsCountDec.clear();acuteChars.clear();
+    
+    multipleCharsCount.clear();multipleChars.clear();multipleCharsCountDec.clear();
     
     outputCommonChars.clear();
     outputAcuteChars.clear();
     outputAverageVector.clear();
     outputTotalsVector.clear();
     
-    kumarExpressions.clear();
-    kumarExpressionsCount.clear();
-    kumarExpressionsCountDec.clear();
+    kumarExpressions.clear();kumarExpressionsCount.clear();kumarExpressionsCountDec.clear();
     
     totalsVectorCountDec.clear();
     
     mainVector.clear();
     
-    whiteSpacesCount = 0 ;
-    tildesCount = 0 ;
+    numericalCharsCountDec.clear();numericalChars.clear();outputNumericalChars.clear();
     
-    numericalCharsCountDec.clear();
-    numericalChars.clear();
-    outputNumericalChars.clear();
+    outputMayus.clear();mayusCountDec.clear();mayusChars.clear();mayusCountDec2.clear();
     
-    outputMayus.clear();
-    mayusCountDec.clear();
-    mayusChars.clear();
-    mayusCountDec2.clear();
-    
-    outputMinus.clear();
-    minusCountDec.clear();
-    minusChars.clear();
-    minusCountDec2.clear();
+    outputMinus.clear();minusCountDec.clear();minusChars.clear();minusCountDec2.clear();
     
     greetingExpression.clear();
     outputGreeting.clear();
     greetingCountDec.clear();
     
-    farewellExpression.clear();
-}
+    spaceLower.clear();spaceUpper.clear();
 
-void TextParser::mergeVectors(std::vector<double>& v0, std::vector<double>& v1, std::vector<double>& v2 , std::vector<double>& v3){
-
-    v1.insert(v1.end(), v2.begin(), v2.end());
-    v0.insert(v0.end(), v1.begin(), v1.end());
-    v0.insert(v0.end(), v3.begin(), v3.end());
-    
+    syntExpression.clear();
 }

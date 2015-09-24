@@ -76,3 +76,38 @@ bool FileHandler::askEnable(){
         return false;
     
 }
+
+void FileHandler::printResults(double highScore, double lowScore) {
+    
+    cout << endl << "######     ######      ######      ######      ######      ######      ######      ###### " <<endl;
+    cout << endl << "High value score: " << highScore <<"% over 100%"<<endl;
+    cout << endl << "Low  value score: " << lowScore <<"% over 100%"<<endl;
+    cout << endl << "######     ######      ######      ######      ######      ######      ######      ###### " <<endl;
+    
+}
+
+void FileHandler::calculateVectorResultsAndPrint( std::vector<double>& results ){
+    
+    double count = 0, totalEstimado = 0, totalGlobal = 0; 
+    
+    cout << "ATRIBUTO:  CARACTERES.  PROMEDIOS.  TOTALES.    TILDES.   NUMEROS.   MAYUSC.   MINUSC.   SALUDO" << endl;
+    cout << "PORCENTAJE: ";
+        
+    for(int i = 0 ; i < results.size(); i ++){
+        std::cout <<results[i] <<"     ";
+        if(results[i] > 1){
+                count += 1; 
+        }    
+    }
+    cout << endl;
+    
+    for(int i = 0 ; i < results.size(); i ++){
+        
+      totalEstimado +=  results[i]/count;
+      totalGlobal +=  results[i]/results.size();
+      
+    }
+    
+    printResults( totalEstimado, totalGlobal);
+
+}

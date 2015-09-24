@@ -11,7 +11,6 @@ class TextParser
 {
 public:
     //Methods for the class
-    void ReadWordsAndChars(std::string );
     void LoadWordVector(std::string );
     void LoadWholeText(std::string);
     
@@ -24,14 +23,10 @@ public:
     void printVectorCombined( std::vector<std::string>& v1 , std::vector<int> & v2 );
     void printVectorCombined( std::vector<std::string>& v1 , std::vector<double> & v2 );
     
-    //Recursivo para almacenar palabras temporales 
-    void breakUpWords(std::string );
+    //Recursivo para almacenar palabras temporales
     
     //void generateUniques();
-    
     //void generateUniquesCount();
-    //void generateSpecialCharacters();
-    void generateFarewell();
     void generateGreetings();
     void generateMayusCharacters();
     void generateMinusCharacters();
@@ -40,6 +35,8 @@ public:
     void generateAcuteChars(); //Caracteres tildados
     void generateMultipleChars(); //Caracteres multiples
     void generateKumarExpressions(); //Caracteres tildados
+    
+    void generateSyntacticExpr(); 
     
     
     int getParagraphs(std::string text);
@@ -56,12 +53,13 @@ public:
     double getWordsPerSent();
     double getWsPerSent();
     double getSpaceBeforeCommaAvg();
-    double getSpaceBeforeComma(std::vector<std::string>& v );
-    double getSpaceAfterComma(std::vector<std::string>& v );
+    double getSpaceBeforeComma(std::string wrd );
+    double getSpaceAfterComma(std::string wrd);
     void getAverages();
     double getWS(std::string text);
-    double getBeginnigUCase();
-    double getBeginnigLCase();
+    double getBeginnigUCase(std::string text);
+    double getBeginnigLCase(std::string text);
+    double getSpaceAfterCommaAvg();
     
     void getTotals();
 
@@ -86,33 +84,34 @@ public:
     void generateOutputMinusChars();
     void generateOutputGreetings();
     
+    void generateLowerCases();
+    void generateUpperCases();
     
-    //void generateTotalsVector();
     void generateOutputTotalsVector();
     
     void refineResults();
     
     void writeFilePlot2(std::vector<std::string>& v1 , std::vector<double> & v2, std::string name,  std::string ext); //Escribe al file para lectura
-    void mergeVectors(std::vector<double>& v0, std::vector<double>& v1, std::vector<double>& v2 , std::vector<double>& v3);
     void resetVariables();  //Utilizado para reiniciar variables, en manejo de archivos múlitples
 
     //Class variables
 public:
-    int whiteSpacesCount ;
-    int tildesCount;
     
     std::string wholeText;
     std::vector<std::string> wordsAndCharsVector; //Toda la lectura del archivo en vector
     std::vector<std::string> wordsVector;
-    //std::vector<std::string> clonedVector;  //Vector temporal para ordenar los contenidos
+    std::vector<std::string> spaceLower;
+    std::vector<std::string> spaceUpper;
     
+    std::vector<std::string> syntExpression;
+    
+    //std::vector<std::string> clonedVector;  //Vector temporal para ordenar los contenidos
     //std::vector<std::string> uniqueWordsVector; //Vector de palabras  o simbolos unicos
     //std::vector<int> uniqueWordsVectorCount; //Cuenta de palabras para cada uno de las palabras o simbolos
     
     
     std::vector<std::string> averagesVector; 
     
-    std::vector<std::string> farewellExpression;
     std::vector<std::string> greetingExpression;
     std::vector<std::string> mayusChars;
     std::vector<std::string> minusChars;

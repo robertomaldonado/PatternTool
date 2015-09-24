@@ -15,13 +15,23 @@ class Analyzer{
         void setId(int n);
         int getId();
         
-        void storeVectorValues( std::vector<double> v1 );
         double get_kNN( std::vector<double> v1, std::vector<double> v2 );
-        void mergeVectors(std::vector<double> v1, std::vector<double> v2, std::vector<double> v3);
         double get_sum( std::vector<double> v1 );
         
         void printVectorCount(std::vector<double>& v);
-                
+        
+        void loadVectors( std::vector<double>& file0, std::vector<double>& file1, std::vector<double>& file2, std::vector<double>& file3,std::vector<double>& file4, std::vector<double>& file5, std::vector <std::vector<double> >& toAssign );
+
+        
+        double applyWeightedArithmeticMean( std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& equivalRef,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef,
+                                         int extraAtribution);
+        
         void initializeResults(std::vector<double>& p,  std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d );
         void performAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e);
         void performEquival(std::vector<double>& p, std::vector<double>& e, std::vector<double> d);

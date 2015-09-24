@@ -8,6 +8,11 @@
     rm *.dat
     echo "Archivos eliminados"
 
+    GREEN='\033[0;32m'
+    BLUE='\033[0;34m'
+    NC='\033[0m' # No Color
+    #printf "I ${RED}love${NC} Stack Overflow\n"
+
     #Obtener las estadisticas promedio
     ./extractAverageData1.sh
     #obtener estadiscas del autor desconocido
@@ -16,6 +21,8 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogram1.sh
+
+    printf "${GREEN}Ploteo 1 generado con exito${NC}\n"
 
 #####PLOTEO GRUPO2
 
@@ -32,6 +39,8 @@
     echo "Graficacion de resultados"
     ./plotHistogram2.sh
 
+    printf "${GREEN}Ploteo 2 generado con exito${NC}\n"
+
 #####PLOTEO GRUPO3
 
    #Eliminar .dat existentes
@@ -46,6 +55,8 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogram3.sh
+
+    printf "${GREEN}Ploteo 3 generado con exito${NC}\n"
 
 #####PLOTEO GRUPO4
 
@@ -62,6 +73,8 @@
     echo "Graficacion de resultados"
     ./plotHistogram4.sh
 
+     printf "${GREEN}Ploteo 4 generado con exito${NC}\n"
+
 #####PLOTEO GRUPO NUMERICO
 
     #Eliminar .dat existentes
@@ -76,6 +89,8 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogramNum.sh
+
+     printf "${GREEN}Ploteo 5 generado con exito${NC}\n"
 
 #####PLOTEO GRUPO TILDES
 
@@ -92,6 +107,8 @@
     echo "Graficacion de resultados"
     ./plotHistogramAccented.sh
 
+     printf "${GREEN}Ploteo 6 generado con exito${NC}\n"
+
 #####PLOTEO GRUPO PROMEDIOS GRUPO 1
 
     #Eliminar .dat existentes
@@ -106,6 +123,8 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogramAvg1.sh
+
+     printf "${GREEN}Ploteo 7 generado con exito${NC}\n"
 
 #####PLOTEO GRUPO PROMEDIOS GRUPO 1
 
@@ -122,6 +141,8 @@
     echo "Graficacion de resultados"
     ./plotHistogramAvg2.sh
 
+     printf "${GREEN}Ploteo 8 generado con exito${NC}\n"
+
 #####PLOTEO GRUPO TOTALES GRUPO 1
 
     #Eliminar .dat existentes
@@ -136,6 +157,8 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogramTot1.sh
+
+     printf "${GREEN}Ploteo 9 generado con exito${NC}\n"
 
 #####PLOTEO GRUPO TOTALES GRUPO 2
 
@@ -152,6 +175,8 @@
     echo "Graficacion de resultados"
     ./plotHistogramTot2.sh
 
+     printf "${GREEN}Ploteo 10 generado con exito${NC}\n"
+
 #####PLOTEO GRUPO TOTALES GRUPO 2
 
     #Eliminar .dat existentes
@@ -166,6 +191,10 @@
     #Generar graficas con barras de error
     echo "Graficacion de resultados"
     ./plotHistogramGreet.sh
+
+    printf "${GREEN}Ploteo 10 generado con exito${NC}\n"
+
+    printf "${BLUE}PLOTS HAVE FINISHED!!${NC}\n"
 
     #Eliminar .dat existentes
     rm *.dat
