@@ -195,8 +195,9 @@ int main(int argc, char** argv) {
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,commonCharResults);
 
     //Analizar los datos por medio del metodo especificado
-    temporalResult =calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw,0);
+    temporalResult = 
+            calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
+            //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 6);
     results.push_back(temporalResult);  
   }
     
@@ -204,8 +205,9 @@ int main(int argc, char** argv) {
       
      calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,averageResults);
 
-      temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw,0);
+      temporalResult = 
+              //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+              calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
       results.push_back(temporalResult);
   }
     
@@ -213,9 +215,9 @@ int main(int argc, char** argv) {
       
      calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,totalResults);
     
-     temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw,0);
-
+     temporalResult = 
+             calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
+             //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
      results.push_back(temporalResult);
   }
     
@@ -223,8 +225,10 @@ int main(int argc, char** argv) {
       
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,tildesResults);
      
-     temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw, 1);
+     temporalResult = 
+             calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw, 1);
+             //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);  
+     
      results.push_back(temporalResult);
   }
     
@@ -232,8 +236,10 @@ int main(int argc, char** argv) {
       
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,numericalResults);
     
-    temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw, 1);
+    temporalResult = 
+      calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw, 1);
+        //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+    
     results.push_back(temporalResult);
   }
     
@@ -241,8 +247,9 @@ int main(int argc, char** argv) {
       
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,mayusResults);
     
-    temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw,0);
+    temporalResult = 
+           // calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+         calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
     results.push_back(temporalResult);
         
   }
@@ -251,17 +258,19 @@ int main(int argc, char** argv) {
       
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,minusResults);
     
-    temporalResult =  calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw,0);
-    results.push_back(temporalResult);
+    temporalResult =  
+            calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
+       // calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+            results.push_back(temporalResult);
   }
     
   if(enableGTNG){
       
     calculator.loadVectors(arch0,arch1,arch2,arch3,arch4,arch5,greetingResults);
     
-    temporalResult = calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5,
-                                             promedios,equival,vector_w, vector_xw, 2); //Identificar cuando uso cual metodo para agregar extra coincidencia
+    temporalResult = 
+            //calculator.applyMinkowski(arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+            calculator.applyWeightedArithmeticMean(  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2); //Identificar cuando uso cual metodo para agregar extra coincidencia
     results.push_back(temporalResult);
   }
    

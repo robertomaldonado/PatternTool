@@ -1,8 +1,0 @@
-Hola Roberto.
-
-Tengo un tema libre.
-"Reconocimiento de autorías de emails y documentos informaticos"
-El objetivo es hacer una herramienta que reconozca quien escribió un e-mail basado en sus patrones de escritura, uso de palabras, uso de signos de puntuación etc.
-Existen algoritmos para detectar esto, entonces en la tesis se deberá implementar dichos algoritmos y proponer uno nuevo.
-
-Que opinas?

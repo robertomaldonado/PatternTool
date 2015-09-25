@@ -16,7 +16,7 @@ class Analyzer{
         int getId();
         
         double get_kNN( std::vector<double> v1, std::vector<double> v2 );
-        double get_sum( std::vector<double> v1 );
+        double get_sum( std::vector<double>& v1 );
         
         void printVectorCount(std::vector<double>& v);
         
@@ -32,6 +32,15 @@ class Analyzer{
                                          std::vector<double>& vector_xwRef,
                                          int extraAtribution);
         
+        double applyMinkowski( std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& minkowskiDistance,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef,
+                                         double exp);
+        
         void initializeResults(std::vector<double>& p,  std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d );
         void performAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e);
         void performEquival(std::vector<double>& p, std::vector<double>& e, std::vector<double> d);
@@ -44,6 +53,9 @@ class Analyzer{
         void performVectorXWGreeting(std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d);
         
         void performClean( std::vector<double>& z, std::vector<double>& a,  std::vector<double>& b,std::vector<double>& c, std::vector<double>& d, std::vector<double>& e, std::vector<double>& p, std::vector<double>& ee,std::vector<double>& w, std::vector<double>& wx);
+        
+        void performMinkowski(std::vector<double>& p, std::vector<double>& e, std::vector<double>& d, double exp);
+        double performMinEquival(std::vector<double>& a, std::vector<double>& b, double exp);
 public:
         int identifier;
         std::vector<double> featuresCountVector(); 
