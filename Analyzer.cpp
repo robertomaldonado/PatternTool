@@ -1,4 +1,4 @@
-
+#define DEBUGMODEOFF
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -99,35 +99,11 @@ void Analyzer::performMinkowski(std::vector<double>& p, std::vector<double>& e, 
         
     }
     
-//    std::vector<double> maxDistance;
-    
     for(int i = 0 ; i < d.size() ;i++){ 
         
         p[i] = abs( std::pow(p[i],exp));
         
     }
-//    
-//    double maxAwayDist = get_sum(p);
-//    double sumMaxAwayDist = std::pow(maxAwayDist,0.25);
-//    
-//    double var = get_sum(e);
-//    double totalMin = std::pow(var,0.25);
-    
-//    cout << "******: " <<totalMin << "and ......" << var <<endl;
-//    cout << "&&&&&: " <<maxAwayDist << "and ......" <<  sumMaxAwayDist <<endl;
-//    cout << "Alejamiento determinado"   << var/sumMaxAwayDist <<endl;
-    
-//    for(int i = 0 ; i < d.size() ;i++){ 
-//        
-//        p[i] = p[i]*p[i]*p[i];
-//        
-//    }
-//    
-//    for(int i = 0 ; i < d.size() ;i++){ 
-//        
-//        e[i] = ;
-//        
-//    }
  
 }
 
@@ -221,7 +197,34 @@ void Analyzer::loadVectors( std::vector<double>& file0, std::vector<double>& fil
     
 }
 
-double Analyzer::applyWeightedArithmeticMean( std::vector<double>& file0, std::vector<double>& file1, 
+double Analyzer::performMinEquival(std::vector<double>& a, std::vector<double>& b, double exp){
+    
+    double returnVal;
+    double maxAwayDist = get_sum(a);
+    double root = 1/exp;
+    double sumMaxAwayDist = std::pow(maxAwayDist,root);
+    
+    double var = get_sum(b);
+    double totalMin = std::pow(var,root);
+    
+#ifndef DEBUGMODEOFF
+    cout <<" returning" << abs(((totalMin/sumMaxAwayDist)*100))  <<endl;
+#endif
+    
+    if((totalMin/sumMaxAwayDist)*100 > 100){
+          returnVal = abs((totalMin/sumMaxAwayDist)*100-200);
+    }else{
+        returnVal = 100-(totalMin/sumMaxAwayDist)*100;
+    }
+    
+   
+    
+    return returnVal;
+}
+    
+double Analyzer::applyWeightedArithmeticMeanDistance( 
+                                         std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
                                          std::vector<double>& file2, std::vector<double>& file3,
                                          std::vector<double>& file4, std::vector<double>& file5, 
                                          std::vector<double>& promediosRef,
@@ -232,6 +235,8 @@ double Analyzer::applyWeightedArithmeticMean( std::vector<double>& file0, std::v
      
     double returnScore = 0;
     
+    loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+            
     initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 );
     
     if(extraAtribution==0 || extraAtribution==1 ){
@@ -259,35 +264,15 @@ double Analyzer::applyWeightedArithmeticMean( std::vector<double>& file0, std::v
     
     performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef);
     
+     cout << "Weighted mean distance has been applied" <<endl; 
+    
     return returnScore;
 }
 
-double Analyzer::performMinEquival(std::vector<double>& a, std::vector<double>& b, double exp){
-    
-    double returnVal;
-    double maxAwayDist = get_sum(a);
-    double root = 1/exp;
-    double sumMaxAwayDist = std::pow(maxAwayDist,root);
-    
-    double var = get_sum(b);
-    double totalMin = std::pow(var,root);
-    
-    
-    cout <<" returning" << abs(((totalMin/sumMaxAwayDist)*100))  <<endl;
-    
-    if((totalMin/sumMaxAwayDist)*100 > 100){
-          returnVal = 100;
-    }else{
-        returnVal = 100-(totalMin/sumMaxAwayDist)*100;
-    }
-    
-    return returnVal;
-}
-    
-    
-double Analyzer::applyMinkowski( std::vector<double>& file0, std::vector<double>& file1, 
+double Analyzer::applyMinkowskiDistance( std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
                                          std::vector<double>& file2, std::vector<double>& file3,
-                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& file4, std::vector<double>& file5,
                                          std::vector<double>& promediosRef,
                                          std::vector<double>& minkowskiDistance,
                                          std::vector<double>& vector_wRef,
@@ -296,30 +281,49 @@ double Analyzer::applyMinkowski( std::vector<double>& file0, std::vector<double>
      
     double returnScore = 0;
     
-    initializeResults(promediosRef, minkowskiDistance, vector_wRef, vector_xwRef, file0 );
+       loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+        
+       initializeResults(promediosRef, minkowskiDistance, vector_wRef, vector_xwRef, file0 );
     
        performAverages(promediosRef, file1, file2, file3, file4, file5); 
        
        performMinkowski(promediosRef, minkowskiDistance ,file0, exp);
        
        returnScore = performMinEquival(promediosRef, minkowskiDistance, exp );
+    
+        performClean( file0, file1, file2, file3, file4, file5, promediosRef, minkowskiDistance,vector_wRef, vector_xwRef);
+        
+#ifndef DEBUGMODEOFF
+        cout << "Minkowski distance has been applied" <<endl;
+#endif
+    
+    return returnScore;
+}
+
+double Analyzer::applyChebyshevDistance( std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& minkowskiDistance,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef){
+     
+    double returnScore = 0;
+    
+       loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+    
+       initializeResults(promediosRef, minkowskiDistance, vector_wRef, vector_xwRef, file0 );
+    
+       performAverages(promediosRef, file1, file2, file3, file4, file5); 
+//       
+//       performMinkowski(promediosRef, minkowskiDistance ,file0, exp);
+//       
+//       returnScore = performMinEquival(promediosRef, minkowskiDistance, exp );
 //    
-//    if(extraAtribution==0){
-//        performVectorXW(equivalRef, vector_wRef, vector_xwRef, file0);
-//    }else if(extraAtribution==1){
-//        performVectorXWNumerical(equivalRef, vector_wRef, vector_xwRef, file0);
-//    }else if(extraAtribution==2){
-//        performVectorXWGreeting(equivalRef, vector_wRef, vector_xwRef, file0);
-//    }
-// 
-    
-//    if(get_sum(vector_xwRef) <= 100){
-//        returnScore = get_sum(vector_xwRef); 
-//    }else{
-//        returnScore = 100;
-//    }
-    
-    performClean( file0, file1, file2, file3, file4, file5, promediosRef, minkowskiDistance,vector_wRef, vector_xwRef);
+//        performClean( file0, file1, file2, file3, file4, file5, promediosRef, minkowskiDistance,vector_wRef, vector_xwRef);
+//        
+        cout << "Chebyshev distance has been applied" <<endl;
     
     return returnScore;
 }
