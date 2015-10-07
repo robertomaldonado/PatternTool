@@ -15,13 +15,24 @@ class Analyzer{
         void setId(int n);
         int getId();
         
-        double get_kNN( std::vector<double> v1, std::vector<double> v2 );
+
         double get_sum( std::vector<double>& v1 );
         
         void printVectorCount(std::vector<double>& v);
         
         void loadVectors( std::vector<double>& file0, std::vector<double>& file1, std::vector<double>& file2, std::vector<double>& file3,std::vector<double>& file4, std::vector<double>& file5, std::vector <std::vector<double> >& toAssign );
         
+        
+        double applyRegularMeanDistance( 
+                                         std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& equivalRef,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef);
+      
         double applyWeightedArithmeticMeanDistance( 
                                          std::vector <std::vector<double> >& toAssign,
                                          std::vector<double>& file0, std::vector<double>& file1, 
@@ -48,11 +59,14 @@ class Analyzer{
                                          std::vector<double>& file2, std::vector<double>& file3,
                                          std::vector<double>& file4, std::vector<double>& file5, 
                                          std::vector<double>& promediosRef,
-                                         std::vector<double>& minkowskiDistance,
+                                         std::vector<double>& chebyshevDistance,
                                          std::vector<double>& vector_wRef,
                                          std::vector<double>& vector_xwRef);
        
+        
+        void performMeanWeigths(std::vector<double>& p, std::vector<double>& vw, std::vector<double> d);
      
+        void performMeanEquival(std::vector<double>& p, std::vector<double>& e, std::vector<double> d);
         
         void initializeResults(std::vector<double>& p,  std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d );
         void performAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e);
@@ -69,6 +83,9 @@ class Analyzer{
         
         void performMinkowski(std::vector<double>& p, std::vector<double>& e, std::vector<double>& d, double exp);
         double performMinEquival(std::vector<double>& a, std::vector<double>& b, double exp);
+        
+        void performChebyshev(std::vector<double>& p, std::vector<double>& e, std::vector<double>& d);
+        double performChevEquival(std::vector<double>& a, std::vector<double>& b);
 public:
         int identifier;
         std::vector<double> featuresCountVector(); 

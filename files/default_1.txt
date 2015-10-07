@@ -1,11 +1,2 @@
-Estimado Edwin,
-
-Me gustaría presentarle un avance del controlador para joystick.
-Después de investigar sobre el asunto, intenté utilizar varios métodos para la comunicación con el dispositivo, la que se vio factible es de características web, por lo que funciona con el explorador Mozilla Firefox que presenta mayor estabilidad. 
-Dicha tecnología aún se encuentra en etapas iniciales de desarrollo y es de carácter open source.
-Como puede ver la aplicación se comunica directamente con el explorador por lo que se puede adaptar a ser multi-plataforma. 
-Por el momento simplemente reacciona al hacer el botón, pero la idea sería personalizar el código de tal forma que la aplicación tome en cuenta los tiempos y veces que la señal es emitida dependiendo de la prueba que se realiza.
-
-Saludos,
-Roberto M.
-0995329655
+La Universidad
+La universidad en muchos aspectos es una etapa de la vida de algunas personas, por diferentes aspectos ya sean económicos o sociales no todos tienen acceso a ella, quienes dedicen ir a la universidad lo hacen en la mayoría de los casos casos pensando en su futuro, durante la etapa estudiantil un individuo debe elegir entre muchas opciones la mayoria de las veces con una mente racional, pensando en que es una periodo de varios años donde con fin de llegar a su objetivo debe tomar no las deciciones que mas le gusten si no las que sean mejor para él. El ciclo universitario la mayoría de los casos no es una carrera contra el tiempo sino más bien una lucha de resistencia personal, dejando de lado cualquier tipo de actividad que te distraiga como por ejemplo relaciones personales o actividades que demandan grandes cantidades de tiempo, todos estos sacrificios valen la pena ya que el individuo está seguro que con la posibilidad de tener una profesión en el futuro va a tener una mejor posición económica, todos los esfuerzos que hace en su etapa de estudiante los verá recompenzados en su etapa de profesional, algo muy importante es no dejar de lado las relaciones sociales ya que está demostrado científicamente que las personas con mayor inteligencia emocional son más felices que las personas con mayor inteligencia intelectual. La etapa universitaria te prepara para la vida, aprendes por ti mismo que solo a tí te afentan tus acciones y debes aprender a ser más responsable contigo y tus compromisos pueden ser estos estudiar para cualquier materia, saber administrar tu dinero o cuidar tu cuerpo, etc. En fin la etapa universitaria es uno de los mejores momentos de la vida del estudiante donde varias años de esfuerzo y dedicación se consigue un resultado que depende sólo de ti.

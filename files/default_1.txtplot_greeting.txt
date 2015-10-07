@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_1.txt G1 0 G2 0 G3 1 G4 0 G5 0 G6 0 F1 0 F2 0 F3 0 F4 0 F5 1 
+FILE files/default_1.txt G1 0 G2 0 G3 0 G4 0 G5 0 G6 0 F1 0 F2 0 F3 0 F4 0 F5 0 

@@ -194,60 +194,76 @@ int main(int argc, char** argv) {
 
     //Analizar los datos por medio del metodo especificado
     temporalResult = 
-            //calculator.applyWeightedArithmeticMeanDistance( commonCharResults,  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
-            calculator.applyMinkowskiDistance(commonCharResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 6);
+            calculator.applyRegularMeanDistance(commonCharResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+            //calculator.applyWeightedArithmeticMeanDistance(commonCharResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 0);
+          //calculator.applyMinkowskiDistance(commonCharResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 5);
+           // calculator.applyChebyshevDistance(commonCharResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
     results.push_back(temporalResult);  
   }
   if(enableAV){ //Calcular similitud con averageResults
 
       temporalResult = 
-              calculator.applyMinkowskiDistance(averageResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
-              //calculator.applyWeightedArithmeticMeanDistance( averageResults, arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
+              calculator.applyRegularMeanDistance(averageResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+              //calculator.applyWeightedArithmeticMeanDistance(averageResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 0);
+             //calculator.applyMinkowskiDistance(averageResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+            //calculator.applyChebyshevDistance(averageResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
       results.push_back(temporalResult);
   } 
   if(enableTR){ //Calcular similitud con totalResults
     
      temporalResult = 
-             //calculator.applyWeightedArithmeticMeanDistance(  totalResults, arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
-             calculator.applyMinkowskiDistance(totalResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+             calculator.applyRegularMeanDistance(totalResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+             //calculator.applyWeightedArithmeticMeanDistance(totalResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 0);
+          //calculator.applyMinkowskiDistance(totalResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+            //calculator.applyChebyshevDistance(totalResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
      results.push_back(temporalResult);
   } 
   if(enableTLR){  //Calcular similitud con totalResults
      
      temporalResult = 
-             //calculator.applyWeightedArithmeticMeanDistance( tildesResults,  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw, 1);
-             calculator.applyMinkowskiDistance(tildesResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);  
+             calculator.applyRegularMeanDistance(tildesResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+           //calculator.applyWeightedArithmeticMeanDistance(tildesResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 1);
+          //calculator.applyMinkowskiDistance(tildesResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+            //calculator.applyChebyshevDistance(tildesResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);  
      
      results.push_back(temporalResult);
   }
   if(enableNUMS){
     
     temporalResult = 
-         //calculator.applyWeightedArithmeticMeanDistance(numericalResults,  arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw, 1);
-         calculator.applyMinkowskiDistance(numericalResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+            calculator.applyRegularMeanDistance(numericalResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+         //calculator.applyWeightedArithmeticMeanDistance(numericalResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 1);
+          //calculator.applyMinkowskiDistance(numericalResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+            //calculator.applyChebyshevDistance(numericalResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
     
     results.push_back(temporalResult);
   } 
   if(enableMAYUS){
    
     temporalResult = 
-           calculator.applyMinkowskiDistance(mayusResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
-           //calculator.applyWeightedArithmeticMeanDistance( mayusResults, arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
+            calculator.applyRegularMeanDistance(mayusResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+          // calculator.applyWeightedArithmeticMeanDistance(mayusResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 1);
+          //calculator.applyMinkowskiDistance(mayusResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+            //calculator.applyChebyshevDistance(mayusResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
     results.push_back(temporalResult);
         
   }
   if(enableMINUS){
     
     temporalResult =  
-            //calculator.applyWeightedArithmeticMeanDistance( minusResults, arch0, arch1, arch2,arch3, arch4, arch5,promedios,equival,vector_w, vector_xw,0);
-            calculator.applyMinkowskiDistance(minusResults, arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
+            calculator.applyRegularMeanDistance(minusResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+           //calculator.applyWeightedArithmeticMeanDistance(minusResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 1);
+          //calculator.applyMinkowskiDistance(minusResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+           //calculator.applyChebyshevDistance(minusResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
     results.push_back(temporalResult);
   }
   if(enableGTNG){
      
     temporalResult = 
-            calculator.applyMinkowskiDistance(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 4);
-            //calculator.applyWeightedArithmeticMeanDistance(greetingResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2); //Identificar cuando uso cual metodo para agregar extra coincidencia
+          calculator.applyRegularMeanDistance(greetingResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
+          //calculator.applyWeightedArithmeticMeanDistance(greetingResults,  arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+          //calculator.applyMinkowskiDistance(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
+          //calculator.applyChebyshevDistance(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
     results.push_back(temporalResult);
   }
  
