@@ -15,6 +15,7 @@ public:
     //Methods for the class
 void welcomeUser();
 int askDebug();
+int askMethod();
 int getPubNumber();
 std::string makeName(int textosPrevios);
 int askMode();

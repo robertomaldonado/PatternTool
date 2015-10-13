@@ -1,4 +1,7 @@
+
 #define DEBUGMODEOFF
+
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -315,30 +318,21 @@ double Analyzer::performMinEquival(std::vector<double>& a, std::vector<double>& 
     
 #ifndef DEBUGMODEOFF
     cout <<" returning" << abs(((totalMin/sumMaxAwayDist)*100))  <<endl;
-#endif
-    
     cout << totalMin/sumMaxAwayDist << endl;
+ #endif
+
     returnVal = (1 - (totalMin/sumMaxAwayDist));
     
     if(returnVal < 1 && returnVal > -1 )
         returnVal = abs(returnVal)*100;
     else
         returnVal = 0;
-    
-//   if((totalMin/sumMaxAwayDist)*100 > 100 && (totalMin/sumMaxAwayDist)*100 < 200  ){
-//          returnVal = abs((totalMin/sumMaxAwayDist)*100-200);
-//    }else{
-//        returnVal = 100-(totalMin/sumMaxAwayDist)*100;
-//    }
-    
-//    if((totalMin/sumMaxAwayDist)*100 > 100 && (totalMin/sumMaxAwayDist)*100 < 200  ){
-//          returnVal = abs((totalMin/sumMaxAwayDist)*100-200);
-//    }else{
-//        returnVal = 100-(totalMin/sumMaxAwayDist)*100;
-//    }
    
+    #ifndef DEBUGMODEOFF
     cout << "Minkowski result: "<< returnVal <<endl;
+    #endif
     return returnVal;
+    
 }
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/ 
 /*END_MINKOWSKI*/
@@ -357,11 +351,14 @@ void Analyzer::performChebyshev(std::vector<double>& p, std::vector<double>& e, 
         if(e[i] > p[i] || isnan(e[i]) == 1 ){
             e[i]=0;
         }
+     
         
-        cout << "Average: " << p[i] << " vs: Autor B: "<< d[i] << " with distance: " << abs(p[i] - d[i]) <<endl;
-       // #ifndef DEBUGMODEOFF
-        //cout << "Average: " << p[i] << " vs: Autor B: "<< d[i] << " with distance: " << abs(p[i] - d[i]) <<endl;
-       //#endif
+     #ifndef DEBUGMODEOFF
+        
+     cout << "Average: " << p[i] << " vs: Autor B: "<< d[i] << " with distance: " << abs(p[i] - d[i]) <<endl;
+     
+    #endif
+     
     
     }
     
@@ -375,9 +372,14 @@ void Analyzer::performChebyshev(std::vector<double>& p, std::vector<double>& e, 
      
      double closeness = (abs(abs(remoteness)-abs(reference))/reference)*100; //Valor de acercamiento estimado
      
+     
+     #ifndef DEBUGMODEOFF
+        
      cout << "Tu maximo es: " << remoteness <<endl;
      cout << "con referencia: " << reference <<endl;
      cout << "con equivalencia: " << remoteness/reference <<endl;
+     
+    #endif
      
      
      return closeness;
@@ -489,74 +491,9 @@ void Analyzer::performMeanEquival(std::vector<double>& p, std::vector<double>& e
         }
         
          e[i]=(1-e[i])*100;
-         
-//        if(p[i]!=0){
-//                e[i] = 100*((abs(d[i]-p[i]))/ p[i]) ;
-//        }else{
-//                e[i] = 0;
-//        }
-//        
-//        if(e[i] > 100 && e[i] < 200){
-//           e[i] = abs(e[i] - 200);
-//        }else if(e[i] >= 200){
-//           e[i] = 0;
-//        }
        
     }
 }
-
-//void Analyzer::performEquival(std::vector<double>& p, std::vector<double>& e, std::vector<double> d){
-//
-//    for(int i = 0 ; i < d.size() ;i++){ 
-//        
-//        if(p[i]!=0){
-//                e[i] = (100 * d[i])/ p[i] ;
-//        }else{
-//                e[i] = 0;
-//        }
-//        
-//        if(e[i] > 100 && e[i] < 200){
-//           e[i] = abs(e[i] - 200);
-//        }else if(e[i] >= 200){
-//           e[i] = 0;
-//        }
-//       
-//    }
-//}
-//
-////
-//void Analyzer::performVectorW(std::vector<double>& p, std::vector<double>& vw, std::vector<double> d){
-//    
-//    double sum = 0;
-//    //promedios, vector_w ,arch0
-//    
-//    for(int i = 0; i < p.size() ; i++)
-//    {
-//        sum += p[i] ;
-//    }    
-//   
-//    for(int i = 0 ; i < d.size() ;i++){ 
-//        
-//        if( sum!=0 ){
-//                vw[i] =  ((p[i])/sum) ;
-//        }else{
-//               vw[i] = 0;
-//        }
-//    }
-//
-//}
-//
-////Method used by Weighted Mean Distance
-////Perform the product given by the weights in the vector and the percentage of similarity. No additional similarities given by existence of parameter
-//void Analyzer::performVectorXW(std::vector<double>& e, std::vector<double>& w, std::vector<double>& wx, std::vector<double> d){
-//    
-//    //equival, vector_w, vector_xw, arch0
-//    
-//    for(int i = 0 ; i < d.size() ;i++){ 
-//                wx[i] =  e[i]*w[i] ;    
-//    }
-//    
-//}
 
 /*=====================================================================================*/  
 /*END_WEIGTHEDMEAN*/

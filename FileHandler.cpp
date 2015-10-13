@@ -53,6 +53,16 @@ int FileHandler::askDebug(){
     
 }
 
+int FileHandler::askMethod(){
+    
+    int dMode = 0;
+    cout << endl;
+    cout << "Method. (1)Regular Mean Dist. (2)Weighted Mean Dist. (3)Minkowski Dist. (4)Chebyshev Dist. ";
+    cin >> dMode;
+    return dMode;
+    
+}
+
 int FileHandler::askMode(){
 
     int mode = 0;
