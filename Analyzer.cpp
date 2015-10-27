@@ -132,8 +132,8 @@ double Analyzer::applyWeightedArithmeticMeanDistance(
         performVectorXWGreeting(equivalRef, vector_wRef, vector_xwRef, file0);
     }
     
-    if(get_sum(vector_xwRef) <= 100){
-        returnScore = get_sum(vector_xwRef); 
+    if(get_sum(vector_xwRef)/get_sum(vector_wRef) <= 100){
+        returnScore = get_sum(vector_xwRef)/get_sum(vector_wRef); 
     }else{
         returnScore = 100;
     }

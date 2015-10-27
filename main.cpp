@@ -190,7 +190,6 @@ int main(int argc, char** argv) {
     double temporalResult = 0;
     //method = 4;
     
-    
     /*Declarar objeto del tipo Analyzer para realizar los calculos*/
   
   if(enableCC){ /*Validar si el conjunto de parametros fue seleccionado por el usuario*/

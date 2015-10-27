@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_1.txt MAA 0 MAE 0 MAI 0 MAO 0 MAU 0 MIA 0.769231 MIE 2.30769 MII 3.07692 MIO 3.84615 MIU 0.769231 
+FILE files/default_1.txt MAA 0 MAE 0 MAI 0 MAO 0 MAU 0 MIA 0 MIE 0 MII 0 MIO 0 MIU 0 

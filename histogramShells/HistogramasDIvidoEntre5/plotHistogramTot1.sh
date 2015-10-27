@@ -21,7 +21,7 @@ echo "set grid" >> $filename
 echo "set boxwidth 0.90 relative" >> $filename
 
  echo "set style fill solid 1.0 noborder" >> $filename
- echo "set key width 1 height 1 box enhanced inside top right" >> $filename
+ echo "set key width 1 height 1 box enhanced outside top right" >> $filename
  echo "set xlabel \"Parameters\" font \"Courier,18\"" >> $filename
  echo "set ylabel \"Repetition Index \" font \"Courier,18\"" >> $filename
 

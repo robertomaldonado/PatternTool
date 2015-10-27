@@ -22,9 +22,6 @@ int askMode();
 bool askEnable();
 void printResults(double highScore, double lowScore);
 void calculateVectorResultsAndPrint( std::vector<double>& results );
-    //Class variables
-public:
-    int debugMode;
 
 };
 
