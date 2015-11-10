@@ -62,6 +62,15 @@ class Analyzer{
                                          std::vector<double>& chebyshevDistance,
                                          std::vector<double>& vector_wRef,
                                          std::vector<double>& vector_xwRef);
+       double applyNewCustomizedMethod( 
+                                         std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& equivalRef,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef);
        
         
         void performMeanWeigths(std::vector<double>& p, std::vector<double>& vw, std::vector<double> d);

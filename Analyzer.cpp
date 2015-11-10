@@ -111,9 +111,9 @@ double Analyzer::applyWeightedArithmeticMeanDistance(
      
     double returnScore = 0;
     
-    loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+    loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
             
-    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 );
+    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 ); //Obligatorio
     
     if(extraAtribution==0 || extraAtribution==1 ){
        performAverages(promediosRef, file1, file2, file3, file4, file5); 
@@ -138,14 +138,14 @@ double Analyzer::applyWeightedArithmeticMeanDistance(
         returnScore = 100;
     }
     
-    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef);
+    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef); //Obligatorio
     
     #ifndef DEBUGMODEOFF
          cout << "Weighted mean distance has been applied" <<endl; 
     #endif
     
     
-    return returnScore;
+    return returnScore; //Obligatorio
 }
 
 void Analyzer::performBinaryAverages(std::vector<double>& v, std::vector<double> a,std::vector<double> b, std::vector<double> c, std::vector<double> d, std::vector<double> e){
@@ -263,25 +263,25 @@ double Analyzer::applyMinkowskiDistance( std::vector <std::vector<double> >& toA
                                          std::vector<double>& vector_xwRef,
                                          double exp){
      
-    double returnScore = 0;
+    double returnScore = 0; //Obligatorio
     
-       loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+       loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
         
-       initializeResults(promediosRef, minkowskiDistance, vector_wRef, vector_xwRef, file0 );
+       initializeResults(promediosRef, minkowskiDistance, vector_wRef, vector_xwRef, file0 ); //Obligatorio
     
-       performAverages(promediosRef, file1, file2, file3, file4, file5); 
+       performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio
        
        performMinkowski(promediosRef, minkowskiDistance ,file0, exp);
        
-       returnScore = performMinEquival(promediosRef, minkowskiDistance, exp );
+       returnScore = performMinEquival(promediosRef, minkowskiDistance, exp ); 
     
-        performClean( file0, file1, file2, file3, file4, file5, promediosRef, minkowskiDistance,vector_wRef, vector_xwRef);
+       performClean( file0, file1, file2, file3, file4, file5, promediosRef, minkowskiDistance,vector_wRef, vector_xwRef); //Obligatorio
         
 #ifndef DEBUGMODEOFF
         cout << "Minkowski distance has been applied" <<endl;
 #endif
     
-    return returnScore;
+    return returnScore; //Obligatorio
 }
 
 void Analyzer::performMinkowski(std::vector<double>& p, std::vector<double>& e, std::vector<double>& d, double exp){
@@ -395,25 +395,25 @@ double Analyzer::applyChebyshevDistance( std::vector <std::vector<double> >& toA
                                          std::vector<double>& vector_wRef,
                                          std::vector<double>& vector_xwRef){
      
-    double returnScore = 0;
+    double returnScore = 0; //Obligatorio
     
-       loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
+       loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
     
-       initializeResults(promediosRef, chebyshevDistance, vector_wRef, vector_xwRef, file0 );
+       initializeResults(promediosRef, chebyshevDistance, vector_wRef, vector_xwRef, file0 ); //Obligatorio
     
-       performAverages(promediosRef, file1, file2, file3, file4, file5); 
+       performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio
        
-       performChebyshev(promediosRef, chebyshevDistance ,file0);
+       performChebyshev(promediosRef, chebyshevDistance ,file0); //Personalizacion
        
-       returnScore = performChevEquival(promediosRef, chebyshevDistance);
+       returnScore = performChevEquival(promediosRef, chebyshevDistance); //Personalizacion
     
-       performClean( file0, file1, file2, file3, file4, file5, promediosRef, chebyshevDistance,vector_wRef, vector_xwRef);
+       performClean( file0, file1, file2, file3, file4, file5, promediosRef, chebyshevDistance,vector_wRef, vector_xwRef); //Obligatorio
         
 #ifndef DEBUGMODEOFF
         cout << "Chebyshev distance has been applied" <<endl;
 #endif
         
-    return returnScore;
+    return returnScore; //Obligatorio
 }
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/   
 /*END_CHEBYSHEV*/ 
@@ -436,11 +436,11 @@ double Analyzer::applyRegularMeanDistance(
      
     double returnScore = 0;
     
-    loadVectors(file0, file1, file2, file3, file4, file5, toAssign);
-    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 );
-    performAverages(promediosRef, file1, file2, file3, file4, file5); 
+    loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
+    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 ); //Obligatorio
+    performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio
     
-    performMeanEquival(promediosRef, equivalRef ,file0);
+    performMeanEquival(promediosRef, equivalRef ,file0); 
     
     performMeanWeigths(promediosRef, vector_wRef ,file0);
     
@@ -449,10 +449,10 @@ double Analyzer::applyRegularMeanDistance(
     if(get_sum(vector_xwRef) <= 100){
         returnScore = get_sum(vector_xwRef); 
     }else{
-        returnScore = 100;
+        returnScore = 100; 
     }
     
-    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef);
+    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef); //Obligatorio
     
     #ifndef DEBUGMODEOFF
          cout << "Weighted mean distance has been applied" <<endl; 
@@ -494,7 +494,41 @@ void Analyzer::performMeanEquival(std::vector<double>& p, std::vector<double>& e
        
     }
 }
-
 /*=====================================================================================*/  
 /*END_WEIGTHEDMEAN*/
 /*=====================================================================================*/ 
+
+
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
+/* BEGIN_MEAN: Section related to methods employed by regular and equitative Distance*/
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
+
+double Analyzer::applyNewCustomizedMethod( 
+                                         std::vector <std::vector<double> >& toAssign,
+                                         std::vector<double>& file0, std::vector<double>& file1, 
+                                         std::vector<double>& file2, std::vector<double>& file3,
+                                         std::vector<double>& file4, std::vector<double>& file5, 
+                                         std::vector<double>& promediosRef,
+                                         std::vector<double>& equivalRef,
+                                         std::vector<double>& vector_wRef,
+                                         std::vector<double>& vector_xwRef){
+     
+    double returnScore = 0; //Obligatorio
+    
+    loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
+    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 ); //Obligatorio
+    performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio
+    
+    ////nuevoMetodo1(promediosRef, chebyshevDistance ,file0); //Personalizacion
+       
+    returnScore = 0 //nuevoMetodo2(promediosRef, chebyshevDistance); //Personalizacion
+    
+    
+    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef); //Obligatorio
+    
+    return returnScore; //Obligatorio
+}
+
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
+/*END_WEIGTHEDMEAN*/
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/ 

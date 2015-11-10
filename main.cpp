@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
     int mode = 0, debugMode = 0, method = 0;
     
     manager.welcomeUser(); //Welcome message and menu
-    debugMode = 0; //Set to be 0 when in production
-    //debugMode = manager.askDebug();
-    mode = 1; //Paramtro para extrar todas las estadistacas con promedio. Obligatorio.
+    //debugMode = 0; //Set to be 0 when in production
+    debugMode = manager.askDebug();
+    mode = 1; //Parametro para extrar todas las estadistacas con promedio. Obligatorio.
     method = manager.askMethod();
     
     //Variables boolenas de control
