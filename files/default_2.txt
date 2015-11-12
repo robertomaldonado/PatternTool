@@ -1,11 +1,1 @@
-Hola Mauricio,
-
-Adjunto los tres tipo de gráficos que se pueden presentar en la investigación. ¿Cual opinas que sea el mejor? 
-La gráfica de barras contiene las barras de error únicamente en el promedio porque me parece que dentro de ella es lo que se debe comparar si el autor extraño posee el mismo estilo de escritura.
-
-También te adjunto un poco de los resultados de pruebas. Los porcentajes indican la similitud del patrón de escritura.
-Al parecer habría que perfeccionar un poco más los parámetros de ponderación, para obtener mejores resultados (Actualmente estoy trabajando en esa parte antes de seguir realizando pruebas). 
-
-
-Gracias,
-Roberto M.
+Nuevo Texto Autor A

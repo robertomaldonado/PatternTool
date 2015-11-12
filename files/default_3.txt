@@ -1,12 +1,1 @@
-Hola Mauricio,
-
-Tengo una duda sobre el proceso analítico que definiría cual es la aproximación del autor extraño a los 5 textos alimentados al sistema de forma previa. 
-Como estaba leyendo en las publicaciones que tengo, los autores emplean métodos computacionales como el vecino más cercano, supporting vector machines o redes neuronales que devuelven los resultados sin presentar  el análisis numérico debido a su complejidad, por lo que me gustaría reunirme para aclarar como se manejaría ese punto del análisis en el proyecto.
-
-Por lo pronto tengo el avance que habíamos quedado, en el que el sistema que recibe 5 textos de un mismo autor y 1 de un autor desconocido.
-
-Te adjunto las gráficas resultantes, para comentar mañana cualquier cosa. 
-La quinta gráfica muestra repeticiones de las vocales acentuadas, tanto mayúsculas como minúsculas.
-
-Gracias,
-Roberto M.
+Nuevo Texto Autor A

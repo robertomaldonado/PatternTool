@@ -1,11 +1,1 @@
-Estimado Edwin,
-
-Me gustaría presentarle un avance del controlador para joystick.
-Después de investigar sobre el asunto, intenté utilizar varios métodos para la comunicación con el dispositivo, la que se vio factible es de características web, por lo que funciona con el explorador Mozilla Firefox que presenta mayor estabilidad. 
-Dicha tecnología aún se encuentra en etapas iniciales de desarrollo y es de carácter open source.
-Como puede ver la aplicación se comunica directamente con el explorador por lo que se puede adaptar a ser multi-plataforma. 
-Por el momento simplemente reacciona al hacer el botón, pero la idea sería personalizar el código de tal forma que la aplicación tome en cuenta los tiempos y veces que la señal es emitida dependiendo de la prueba que se realiza.
-
-Saludos,
-Roberto M.
-0995329655
+Nuevo Texto Autor A

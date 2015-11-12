@@ -500,7 +500,7 @@ void Analyzer::performMeanEquival(std::vector<double>& p, std::vector<double>& e
 
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
-/* BEGIN_MEAN: Section related to methods employed by regular and equitative Distance*/
+/* BEGIN_CUSTOMIZED_METHOD: */
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
 
 double Analyzer::applyNewCustomizedMethod( 
@@ -509,26 +509,26 @@ double Analyzer::applyNewCustomizedMethod(
                                          std::vector<double>& file2, std::vector<double>& file3,
                                          std::vector<double>& file4, std::vector<double>& file5, 
                                          std::vector<double>& promediosRef,
-                                         std::vector<double>& equivalRef,
-                                         std::vector<double>& vector_wRef,
-                                         std::vector<double>& vector_xwRef){
+                                         std::vector<double>& vectorOne,
+                                         std::vector<double>& vectorTwo,
+                                         std::vector<double>& vectorThree){
      
-    double returnScore = 0; //Obligatorio
+    double returnScore; //Obligatorio
     
     loadVectors(file0, file1, file2, file3, file4, file5, toAssign); //Obligatorio
-    initializeResults(promediosRef, equivalRef, vector_wRef, vector_xwRef, file0 ); //Obligatorio
-    performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio
+    initializeResults(promediosRef, vectorOne, vectorTwo, vectorThree, file0 ); //Obligatorio
+    performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio. Saca promedios.
     
-    ////nuevoMetodo1(promediosRef, chebyshevDistance ,file0); //Personalizacion
+   // //Personalizacion
        
-    returnScore = 0 //nuevoMetodo2(promediosRef, chebyshevDistance); //Personalizacion
+    returnScore = 0;//nuevoMetodo2(promediosRef, chebyshevDistance); //Personalizacion
     
     
-    performClean( file0, file1, file2, file3, file4, file5, promediosRef, equivalRef,vector_wRef, vector_xwRef); //Obligatorio
+    performClean( file0, file1, file2, file3, file4, file5, promediosRef, vectorOne,vectorTwo, vectorThree); //Obligatorio
     
     return returnScore; //Obligatorio
 }
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
-/*END_WEIGTHEDMEAN*/
+/*END_CUSTOMIZED_METHOD*/
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/ 
