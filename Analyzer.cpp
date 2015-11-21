@@ -290,7 +290,7 @@ void Analyzer::performMinkowski(std::vector<double>& p, std::vector<double>& e, 
    
          e[i] = abs(p[i] - d[i])/p[i];
          
-        if(e[i] > p[i] || isnan(e[i]) == 1 ){
+        if(e[i] > p[i] ){
             e[i]=0;
         }
         
@@ -348,7 +348,7 @@ void Analyzer::performChebyshev(std::vector<double>& p, std::vector<double>& e, 
         
         e[i] = abs(p[i] - d[i])/p[i];
         
-        if(e[i] > p[i] || isnan(e[i]) == 1 ){
+        if(e[i] > p[i] ){
             e[i]=0;
         }
      
@@ -486,7 +486,7 @@ void Analyzer::performMeanEquival(std::vector<double>& p, std::vector<double>& e
         
          e[i] = abs(p[i] - d[i])/p[i];
         
-        if(e[i] > p[i] || isnan(e[i]) == 1 ){
+        if(e[i] > p[i] ){
             e[i]=0;
         }
         
