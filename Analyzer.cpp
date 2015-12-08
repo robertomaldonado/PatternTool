@@ -519,16 +519,26 @@ double Analyzer::applyNewCustomizedMethod(
     initializeResults(promediosRef, vectorOne, vectorTwo, vectorThree, file0 ); //Obligatorio
     performAverages(promediosRef, file1, file2, file3, file4, file5); //Obligatorio. Saca promedios.
     
-   // //Personalizacion
-       
-    returnScore = 0;//nuevoMetodo2(promediosRef, chebyshevDistance); //Personalizacion
-    
-    
+     performNuevoMetodo(promediosRef, vectorOne ,file0);
+     
+    returnScore = devolverResultado(promediosRef, vectorOne); //Personalizacion
+ 
     performClean( file0, file1, file2, file3, file4, file5, promediosRef, vectorOne,vectorTwo, vectorThree); //Obligatorio
     
     return returnScore; //Obligatorio
 }
 
+
+void Analyzer::performNuevoMetodo(std::vector<double>& promedios, std::vector<double>& auxiliar1 , std::vector<double>& resultadosDeOtroAutor){
+
+    
+}
+
+double Analyzer::devolverResultado(std::vector<double>& promedios, std::vector<double>& r){
+ 
+    return 0;
+    
+}
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/  
 /*END_CUSTOMIZED_METHOD*/
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/ 

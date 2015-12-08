@@ -292,7 +292,8 @@ int main(int argc, char** argv) {
           temporalResult = calculator.applyMinkowskiDistance(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw, 2);
        if(method==4)
           temporalResult = calculator.applyChebyshevDistance(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
-    
+       if(method==5)
+                temporalResult = calculator.applyNewCustomizedMethod(greetingResults,arch0, arch1, arch2,arch3, arch4, arch5, promedios,equival,vector_w, vector_xw);
        results.push_back(temporalResult);
   }
  

@@ -30,4 +30,4 @@ ONP: Other Ampersand
 OVD: Other Pipe
 
 
-FILE files/default_3.txt a 45.2555 b 5.10949 c 23.3577 d 14.5985 e 53.2847 f 2.91971 g 5.10949 h 1.45985 i 21.8978 j 2.18978 k 0 l 28.4672 m 18.9781 n 31.3869 o 41.6058 p 11.6788 q 7.29927 r 29.1971 s 33.5766 t 24.0876 u 27.0073 v 4.37956 w 0 x 2.91971 y 2.91971 z 0 
+FILE files/default_3.txt a 0 b 0 c 0 d 0 e 50 f 0 g 0 h 0 i 0 j 0 k 0 l 0 m 0 n 0 o 75 p 0 q 0 r 25 s 0 t 50 u 50 v 25 w 0 x 25 y 0 z 0 

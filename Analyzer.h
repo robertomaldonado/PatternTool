@@ -72,7 +72,8 @@ class Analyzer{
                                          std::vector<double>& vector_wRef,
                                          std::vector<double>& vector_xwRef);
        
-        //void nuevoMetodo1(std::vector<double>& promediosRef, std::vector<double>& chebyshevDistance , std::vector<double>& file0);
+        void performNuevoMetodo(std::vector<double>& promedios, std::vector<double>& auxiliar1 , std::vector<double>& resultadosDeOtroAutor);
+        double devolverResultado(std::vector<double>& promedios, std::vector<double>& r);
        
         
         void performMeanWeigths(std::vector<double>& p, std::vector<double>& vw, std::vector<double> d);
